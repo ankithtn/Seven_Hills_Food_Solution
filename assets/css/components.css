@@ -61,13 +61,17 @@
   margin-bottom: 18px;
 }
 
-.nav-item {
+.nav-item{
   display: flex;
   align-items: center;
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
   color: #1e1e1e;
+}
+.nav-item a{
+  text-decoration: none;
+  color:#1e1e1e;
 }
 
 /* Dropdowns */
