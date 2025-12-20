@@ -1,0 +1,11 @@
+/* Base reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Body & typography */
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  color: #1e1e1e;
+}

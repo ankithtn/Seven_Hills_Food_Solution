@@ -1,0 +1,135 @@
+/* Buttons */
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+
+/*Icons */
+
+.menu-icon {
+  width: 26px;
+  height: 26px;
+  stroke: #1e1e1e;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.close-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: #1e1e1e;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  stroke: #1e1e1e;
+  stroke-width: 1.8;
+  fill: none;
+}
+
+.chevron-icon {
+  width: 18px;
+  height: 18px;
+  stroke: #1e1e1e;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+
+/* Nav items */
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 60px;
+}
+
+.nav-list li {
+  margin-bottom: 18px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #1e1e1e;
+}
+
+/* Dropdowns */
+
+.dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown {
+  list-style: none;
+  padding-left: 28px;
+  margin-top: 10px;
+  display: none;
+}
+
+.dropdown li {
+  margin-bottom: 10px;
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+}
+
+.has-dropdown.active .dropdown {
+  display: block;
+}
+
+.has-dropdown.active .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* Hero section*/
+.btn {
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn-primary {
+    background: #15803d;
+    color: white;
+    border: none;
+}
+.btn-primary:hover {
+    background: #166534;
+}
+.btn-secondary {
+    background: transparent;
+    color: #15803d;
+    border: 2px solid #15803d;
+}
+.btn-secondary:hover {
+    background: #f0fdf4;
+}
