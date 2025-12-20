@@ -58,6 +58,9 @@
     gap: 0;
     line-height: 1.1;
 }
+.logo-text-container a {
+    text-decoration: none;
+}
 .logo-title {
     font-family: 'Inter', sans-serif;
     font-size: 1.5rem;
