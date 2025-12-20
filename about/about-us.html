@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Seven Hills Food Solutions</title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+    
+    /* Body & typography */
+    body {
+        margin: 0;
+        font-family: Inter, sans-serif;
+        color: #1e1e1e;
+    }
+    .menu-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      float: right;
+    }
+
+    /*Icons */
+
+    .menu-icon {
+      width: 26px;
+      height: 26px;
+      stroke: #1e1e1e;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .close-btn svg {
+      width: 24px;
+      height: 24px;
+      stroke: #1e1e1e;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .nav-icon {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      stroke: #1e1e1e;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .chevron-icon {
+      width: 18px;
+      height: 18px;
+      stroke: #1e1e1e;
+      stroke-width: 2;
+      fill: none;
+      transition: transform 0.3s ease;
+    }
+
+    /* Nav items */
+
+    .nav-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 60px;
+    }
+
+    .nav-list li {
+      margin-bottom: 18px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      color: #1e1e1e;
+    }
+
+    /* Dropdowns */
+
+    .dropdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      list-style: none;
+      padding-left: 28px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .dropdown li {
+      margin-bottom: 10px;
+    }
+
+    .dropdown a {
+      text-decoration: none;
+      color: #444;
+      font-size: 15px;
+    }
+
+    .has-dropdown.active .dropdown {
+      display: block;
+    }
+
+    .has-dropdown.active .chevron-icon {
+      transform: rotate(180deg);
+    }
+    /* Header*/
+
+    .top-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 18px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8fef9;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 999;
+    }
+
+    /* Hidden when scrolling down */
+    .top-header.hide {
+      transform: translateY(-100%);
+    }
+    /* Visible state with separation */
+    .top-header.show {
+      transform: translateY(0);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+    .top-header.scrolled {
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    /* Company name / logo */
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 0rem;
+    }
+
+    .logo-icon {
+      width: 75px;
+      height: 75px;
+      flex-shrink: 0;
+    }
+
+    .logo-text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0;
+        line-height: 1.1;
+    }
+    .logo-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: rgba(0, 0, 0, 0.735);
+        letter-spacing: 0.02em;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+    }
+    .logo-subtitle {    
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #5D8A3A;
+        letter-spacing: 0.05em;
+        margin: 0;
+        padding: 0;
+        margin-top: 2px;
+        line-height: 1;
+    }
+
+    /*Side Nav */
+    .side-nav {
+      position: fixed;
+      top: 0;
+      right: -360px;
+      width: 320px;
+      height: 100%;
+      background: linear-gradient(to bottom right, #f0fdf4, white);
+      box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+      padding: 24px;
+      transition: right 0.3s ease;
+      z-index: 1000;
+      overflow-y: auto;
+    }
+
+    .side-nav.open {
+      right: 0;
+    }
+
+    /* Main Content */
+    .content-section {
+        padding: 4rem 1rem;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    /*Full width hero image*/
+    .hero-banner {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        margin-bottom: 6rem;
+        margin-top: 6rem;
+        border-radius: 30px;
+    }
+
+    .hero-banner-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .hero-banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(15, 76, 129, 0.85), rgba(21, 128, 61, 0.75));
+        z-index: 1;
+    }
+
+    .hero-banner-content {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+        padding: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .hero-banner-content h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-banner-content p {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        max-width: 800px;
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    /* Company Overview */
+    .company-overview {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-bottom: 6rem;
+        margin-top: 4rem;
+    }
+    .overview-content h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #111827;
+        margin-bottom: 1.5rem;
+    }
+    .overview-content p {
+        font-size: 1.125rem;
+        color: #4b5563;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+    .overview-image {
+        border-radius: 1rem;
+        overflow: hidden;
+        height: 400px;
+        background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+    }
+    .overview-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    /* Values Section */
+    .values-section {
+        margin-bottom: 6rem;
+    }
+    .values-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .values-header h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #111827;
+        margin-bottom: 1rem;
+    }
+    .values-header p {
+        font-size: 1.25rem;
+        color: #6b7280;
+    }
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+    .value-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s;
+    }
+    .value-card:hover {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
+    }
+    .value-icon {
+        width: 60px;
+        height: 60px;
+        background: #dcfce7;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    .value-icon svg {
+        width: 30px;
+        height: 30px;
+        color: #15803d;
+    }
+    .value-card h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #111827;
+        margin-bottom: 1rem;
+    }
+    .value-card p {
+        color: #6b7280;
+        line-height: 1.7;
+    }
+    /* Parent Company Section */
+    .parent-company {
+        background: linear-gradient(to right, #15803d, #14532d);
+        color: white;
+        padding: 4rem 2rem;
+        border-radius: 1.5rem;
+        margin-bottom: 6rem;
+    }
+
+    .parent-company-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .parent-company-images {
+        position: relative;
+        height: 400px;
+    }
+
+    .company-carousel {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .company-slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .company-slide.active {
+        opacity: 1;
+    }
+
+    .company-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+    }
+
+    .company-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+    }
+
+    .company-placeholder svg {
+        width: 100px;
+        height: 100px;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .company-indicators {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    }
+
+    .company-indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .company-indicator.active {
+        background: white;
+        width: 30px;
+        border-radius: 5px;
+    }
+
+    .parent-company-content {
+        text-align: left;
+    }
+
+    .parent-company-content h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+    }
+
+    .parent-company-content p {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        color: #dcfce7;
+    }
+
+    .parent-company-content .company-name {
+        font-weight: bold;
+        color: white;
+        font-size: 1.4rem;
+    }
+    /* Quick Links */
+    .quick-links {
+        background: #f9fafb;
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+        margin-bottom: 4rem;
+    }
+    .quick-links h3 {
+        text-align: center;
+        font-size: 2rem;
+        color: #111827;
+        margin-bottom: 2rem;
+    }
+    .links-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .link-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 0.75rem;
+        text-align: center;
+        text-decoration: none;
+        color: #111827;
+        border: 2px solid #e5e7eb;
+        transition: all 0.3s;
+    }
+    .link-card:hover {
+        border-color: #15803d;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(21, 128, 61, 0.1);
+    }
+    .link-card svg {
+        width: 40px;
+        height: 40px;
+        color: #15803d;
+        margin-bottom: 1rem;
+    }
+    .link-card h4 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    .link-card p {
+        font-size: 0.875rem;
+        color: #6b7280;
+    }
+    /* Footer */
+    footer {
+        background: #090c12e2;
+        color: white;
+        padding: 3rem 1rem;
+    }
+    .footer-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    .footer-section h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    .footer-section p,
+    .footer-section div {
+        color: #9ca3af;
+        margin-bottom: 0.5rem;
+    }
+    .footer-bottom {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding-top: 2rem;
+        border-top: 1px solid #374151;
+        text-align: center;
+        color: #9ca3af;
+    }
+    /*Mobile Layout */
+    @media (max-width: 768px) {
+      .side-nav {
+        width: 100%;
+        right: -100%;
+      }
+
+      .logo {
+        font-size: 16px;
+      }
+    }
+    /* Responsive*/
+    @media (max-width: 768px){
+        .hero-banner {
+            height: 400px;
+        }
+
+        .hero-banner-content h2 {
+            font-size: 2rem;
+        }
+
+        .hero-banner-content p {
+            font-size: 1.125rem;
+        }
+
+        .hero-banner-stats {
+            gap: 2rem;
+        }
+
+        .banner-stat-number {
+            font-size: 2rem;
+        }
+        .company-overview {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        .overview-image {
+            height: 300px;
+        }
+        .parent-company {
+            padding: 3rem 1.5rem;
+            border-radius: 1.25rem;
+        }
+        
+        .parent-company-container {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        
+        .parent-company-images {
+            height: 320px;
+        }
+        
+        .parent-company-content h2 {
+            font-size: 2rem;
+        }
+        
+        .parent-company-content p {
+            font-size: 1.1rem;
+        }
+        
+        .parent-company-content .company-name {
+            font-size: 1.25rem;
+        }
+        
+        .company-indicators {
+            bottom: 16px;
+        }
+
+        .values-grid {
+            grid-template-columns: 1fr;
+        }
+        .links-grid {
+            grid-template-columns: 1fr;
+        }
+        .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @media (max-width: 480px) {
+            .hero-banner {
+                height: 350px;
+            }
+            .parent-company {
+                padding: 2.5rem 1.25rem;
+                border-radius: 1rem;
+            }
+
+            .parent-company-images {
+              height: 240px;
+            }
+        
+            .company-placeholder svg {
+              width: 64px;
+              height: 64px;
+            }
+        
+            .parent-company-content {
+              text-align: left;
+            }
+        
+            .parent-company-content h2 {
+              font-size: 1.75rem;
+            }
+        
+            .parent-company-content p {
+              font-size: 1rem;
+              line-height: 1.7;
+            }
+        
+            .parent-company-content .company-name {
+              font-size: 1.1rem;
+            }
+        
+            .company-indicator {
+              width: 8px;
+              height: 8px;
+            }
+        
+            .company-indicator.active {
+              width: 24px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+    </style>
+</head>
+<body>
+    <header class="top-header">
+        <div class="logo-section">
+            <img src="/assets/images/sevenhilllogo.svg" alt="Seven Hills Logo" class="logo-icon"/>
+            
+            <div class="logo-text-container">
+                <div class="logo-title">SEVEN HILLS</div>
+                <div class="logo-subtitle">FOOD SOLUTIONS</div>
+            </div>
+        </div>
+        
+        <button class="menu-btn" onclick="toggleNav()" aria-label="Open menu">
+            <svg class="menu-icon" viewBox="0 0 24 24">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+        </button>
+    </header>
+
+
+    <!--Side nav-->
+    <nav class="side-nav" id="sideNav">
+        <button class="close-btn" onclick="toggleNav()" aria-label="Close menu">
+            <!--Close SVG-->
+            <svg viewBox="0 0 24 24">
+                <line x1="4" y1="4" x2="20" y2="20"/>
+                <line x1="20" y1="4" x2="4" y2="20"/>
+            </svg>
+        </button>
+
+        <ul class="nav-list">
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <!-- About icon -->
+                         <svg class="nav-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M4 20c1.5-4 14.5-4 16 0"/>
+                        </svg>
+                        About Us
+                    </span>
+
+                    <!-- Chevron icon (instead of ▾ text) -->
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+
+                <ul class="dropdown">
+                    <li><a href="/about/our-story.html">Our Story</a></li>
+                    <li><a href="/about/vision.html">Vision</a></li>
+                    <li><a href="/about/policies.html">Policies</a></li>
+                </ul>
+            </li>
+
+            <!-- SEED TO SHELF -->
+            <li>
+                <a href="/seed-to-shelf.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M12 2v20"/>
+                        <path d="M5 10c7-2 9-4 14-6"/>
+                    </svg>
+                    Seed to Shelf
+                </a>
+            </li>
+
+            <!-- OPERATIONS -->
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 9h18M9 21V9"/>
+                        </svg>
+                        Operations
+                    </span>
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </div>
+                <ul class="dropdown">
+                    <li><a href="operations/quality-and-food-safety.html">Quality & Food Safety</a></li>
+                    <li><a href="operations/agriculture.html">Agriculture</a></li>
+                    <li><a href="operations/manufacturing.html">Manufacturing</a></li>
+                    <li><a href="operations/customers.html">Our Customers</a></li>
+                </ul>
+            </li>
+
+           <!-- Products -->
+            <li>
+                <a href="/products.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="16" rx="2"/>
+                        <path d="M3 10h18"/>
+                        <path d="M8 14h3"/>
+                        <path d="M13 14h3"/>
+                    </svg>
+                    Products
+                </a>                                                         
+            </li>
+            
+            <!-- CONTACT -->
+             <li>
+                <a href="/contact.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="M22 6l-10 7L2 6"/>
+                    </svg>
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Main Content -->
+    <main class="content-section">
+        <!-- Full Width Hero Image with Text Overlay -->
+         <section class="hero-banner">
+            <div class="hero-banner-overlay"></div>
+            <img src="../images/about-hero.jpg" alt="Seven Hills Farm" class="hero-banner-image" onerror="this.style.display='none'">
+            <div class="hero-banner-content">
+                <h2>Growing Excellence, Delivering Quality</h2>
+                <p>From our fields to your table, we ensure every step meets the highest standards of quality and sustainability</p>
+            </div>
+        </section>
+        <!-- Company Overview -->
+         <section class="company-overview">
+            <div class="overview-content">
+                <h2>Who We Are</h2>
+                <p>Seven Hills Food Solutions is a premier agricultural export company dedicated to delivering the finest quality produce to markets worldwide. Our commitment to excellence spans from seed selection to final delivery.</p>
+                <p>With over 15 years of experience in the industry, we've established ourselves as a trusted partner for international clients seeking premium agricultural products that meet the highest standards of quality and food safety.</p>
+            </div>
+            <div class="overview-image">
+                <img src="../images/about-overview.jpg" alt="Seven Hills Overview" onerror="this.style.display='none'">
+            </div>
+        </section>
+        
+        <!-- Parent Company -->
+         <section class="parent-company">
+            <div class="parent-company-container">
+                <!-- Left Side: Image Carousel -->
+                 <div class="parent-company-images">
+                    <div class="company-carousel">
+                        <div class="company-slide active">
+                            <img src="../images/vipani-1.jpg" alt="VIPANI Facility" onerror="this.parentElement.innerHTML='<div class=\'company-placeholder\'><svg fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4\'/></svg></div>'">
+                        </div>
+                        <div class="company-slide">
+                            <img src="../images/vipani-2.jpg" alt="VIPANI Operations" onerror="this.parentElement.innerHTML='<div class=\'company-placeholder\'><svg fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z\'/></svg></div>'">
+                        </div>
+                        <div class="company-slide">
+                            <img src="../images/vipani-3.jpg" alt="VIPANI Team" onerror="this.parentElement.innerHTML='<div class=\'company-placeholder\'><svg fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z\'/></svg></div>'">
+                        </div>
+                    </div>
+                    <!-- Carousel Indicators -->
+                     <div class="company-indicators">
+                        <span class="company-indicator active" onclick="goToCompanySlide(0)"></span>
+                        <span class="company-indicator" onclick="goToCompanySlide(1)"></span>
+                        <span class="company-indicator" onclick="goToCompanySlide(2)"></span>
+                    </div>
+                </div>
+                
+                <!-- Right Side: Content -->
+                 <div class="parent-company-content">
+                    <p>Seven Hills is promoted and supported by the <span class="company-name">VIPANI GLOBAL Group of Companies</span> and has seen an average growth of more than 22% per year.</p>
+                    <p style="margin-top: 1.5rem;">The VIPANI GLOBAL Group is driven by ethics and vision and is specialized in managing diversified food products with international companies in manufacturing and supply chain management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="values-section">
+            <div class="values-header">
+                <h2>Our Core Values</h2>
+                <p>Principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Quality First</h3>
+                    <p>We never compromise on quality. Every product undergoes rigorous testing to ensure it meets international standards and exceeds customer expectations.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Ethical Business</h3>
+                    <p>Integrity and transparency are at the heart of our operations. We build lasting relationships through honest, ethical business practices.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>We're committed to sustainable farming practices that protect the environment and ensure long-term viability of agricultural resources.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We embrace modern technology and innovative methods to enhance productivity, quality, and efficiency across our operations.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Customer Focus</h3>
+                    <p>Our customers' success is our success. We work closely with clients to understand and meet their specific needs and requirements.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        </svg>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in every aspect of our business, from cultivation and processing to packaging and delivery.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Links -->
+        <section class="quick-links">
+            <h3>Learn More About Us</h3>
+            <div class="links-grid">
+                <a href="/about/our-story.html" class="link-card">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                    <h4>Our Story</h4>
+                    <p>Journey from inception to today</p>
+                </a>
+
+                <a href="/about/vision.html" class="link-card">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    <h4>Vision & Mission</h4>
+                    <p>Our goals and aspirations</p>
+                </a>
+
+                <a href="/about/policies.html" class="link-card">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <h4>Policies</h4>
+                    <p>Standards and certifications</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Seven Hills</h4>
+                <p>Quality Food Solutions You Can Trust</p>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <div>About Us</div>
+                <div>Our Story</div>
+                <div>Vision</div>
+                <div>Policies</div>
+            </div>
+            <div class="footer-section">
+                <h4>Operations</h4>
+                <div>Agriculture</div>
+                <div>Manufacturing</div>
+                <div>Quality & Safety</div>
+                <div>Our Customers</div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div>Email:  seventohillls@gmail.com</div>
+                <div>Phone: +91 9945398335</div>
+                <div>Location: Bengaluru, India</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seven Hills Food Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+    function toggleNav() {
+        document.getElementById("sideNav").classList.toggle("open");
+    }
+    function toggleDropdown(el) {
+        el.parentElement.classList.toggle("active");
+    }
+    
+    let lastScrollY = window.scrollY;
+    const header = document.querySelector(".top-header");
+    
+    window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            // scrolling down
+            header.classList.add("hide");
+            header.classList.remove("show");
+        } else {
+            // scrolling up
+            header.classList.remove("hide");
+            header.classList.add("show");
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+
+    // Image carousels
+    let currentCompanySlide = 0;
+    let companyAutoPlayInterval;
+    
+    function showCompanySlide(index) {
+        const slides = document.querySelectorAll('.company-slide');
+        const indicators = document.querySelectorAll('.company-indicator');
+        
+        if (!slides.length) return;
+        
+        slides.forEach(function(slide) {
+            slide.classList.remove('active');
+        });
+        
+        indicators.forEach(function(indicator) {
+            indicator.classList.remove('active');
+        });
+        
+        if (index >= slides.length) {
+            currentCompanySlide = 0;
+        } else if (index < 0) {
+            currentCompanySlide = slides.length - 1;
+        } else {
+            currentCompanySlide = index;
+        }
+        
+        slides[currentCompanySlide].classList.add('active');
+        indicators[currentCompanySlide].classList.add('active');
+    }
+    function nextCompanySlide() {
+        showCompanySlide(currentCompanySlide + 1);
+    }
+    
+    function goToCompanySlide(index) {
+        showCompanySlide(index);
+        resetCompanyAutoPlay();
+    }
+
+    function resetCompanyAutoPlay() {
+        clearInterval(companyAutoPlayInterval);
+        companyAutoPlayInterval = setInterval(nextCompanySlide, 4000);
+    }
+
+    // auto play carouels
+    let companyCurrentSlide = 0;
+    const companySlides = document.querySelectorAll(".company-slide");
+    const companyIndicators = document.querySelectorAll(".company-indicator");
+    let companyInterval;
+    
+    /* Show slide */
+    function showCompanySlide(index) {
+        companySlides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
+        });
+        
+        companyIndicators.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+        });
+        
+        companyCurrentSlide = index;
+    }
+    
+    /* Indicator click */
+    function goToCompanySlide(index) {
+        showCompanySlide(index);
+        restartCompanyAutoplay();
+    }
+    
+    /* Auto play */
+    function startCompanyAutoplay() {
+        companyInterval = setInterval(() => {
+            const nextSlide =(companyCurrentSlide + 1) % companySlides.length;
+            showCompanySlide(nextSlide);
+        }, 4000);
+    }
+    
+    function restartCompanyAutoplay() {
+        clearInterval(companyInterval);
+        startCompanyAutoplay();
+    }
+    
+    /* Init */
+    document.addEventListener("DOMContentLoaded", () => {
+        if (companySlides.length > 0) {
+            showCompanySlide(0);
+            startCompanyAutoplay();
+        }
+    });
+</script>
+</body>
+</html>
