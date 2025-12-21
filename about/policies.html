@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policies - Seven Hills Food Solutions</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Body & typography */
+        body {
+            margin: 0;
+            font-family: Inter, sans-serif;
+            color: #1e1e1e;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+
+        /*Icons */
+
+        .menu-icon {
+            width: 26px;
+            height: 26px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .close-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .nav-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            stroke: #1e1e1e;
+            stroke-width: 1.8;
+            fill: none;
+        }
+
+        .chevron-icon {
+            width: 18px;
+            height: 18px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.3s ease;
+        }
+
+        /* Nav items */
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 60px;
+        }
+
+        .nav-list li {
+            margin-bottom: 18px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: #1e1e1e;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            color: #1e1e1e;
+        }
+
+        /* Dropdowns */
+
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            list-style: none;
+            padding-left: 28px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .dropdown li {
+            margin-bottom: 10px;
+        }
+
+        .dropdown a {
+            text-decoration: none;
+            color: #444;
+            font-size: 15px;
+        }
+
+        .has-dropdown.active .dropdown {
+            display: block;
+        }
+
+        .has-dropdown.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Header*/
+
+        .top-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fef9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 999;
+        }
+
+        /* Hidden when scrolling down */
+        .top-header.hide {
+            transform: translateY(-100%);
+        }
+
+        /* Visible state with separation */
+        .top-header.show {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .top-header.scrolled {
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Company name / logo */
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0rem;
+        }
+
+        .logo-icon {
+            width: 75px;
+            height: 75px;
+            flex-shrink: 0;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
+            line-height: 1.1;
+        }
+
+        .logo-text-container a {
+            text-decoration: none;
+        }
+
+        .logo-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.735);
+            letter-spacing: 0.02em;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #5D8A3A;
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0;
+            margin-top: 2px;
+            line-height: 1;
+        }
+
+        /*Side Nav */
+        .side-nav {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 320px;
+            height: 100%;
+            background: linear-gradient(to bottom right, #f0fdf4, white);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .side-nav.open {
+            right: 0;
+        }
+
+        /* Policies Hero */
+        .policies-hero {
+            background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
+            padding: 8rem 2rem 4rem;
+            margin-top: 70px;
+            text-align: center;
+            color: white;
+        }
+
+        .policies-hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .policies-hero-content p {
+            font-size: 1.5rem;
+            color: #dcfce7;
+        }
+
+        /*Introduction Section */
+        .policies-intro {
+            background: white;
+            padding: 4rem 2rem;
+        }
+
+        .policies-intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro-content-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        /* Policy Badge */
+        .policy-badge-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .policy-badge {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 10rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge-icon {
+            width: 250px;
+            height: 250px;
+            margin-bottom: 1rem;
+        }
+
+        .badge-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #15803d;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .badge-subtitle {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #166534;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
+        }
+
+        /* Text Content */
+        .intro-text-content {
+            text-align: left;
+        }
+
+        .intro-text-content h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text-content p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text-content p strong {
+            color: #15803d;
+            font-weight: 700;
+        }
+
+        /* Main Policies Section */
+        .policies-main {
+            background: #f9fafb;
+            padding: 4rem 0;
+            min-height: 100vh;
+        }
+
+        .policies-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            padding: 0 2rem;
+        }
+
+        /* Sidebar Navigation */
+        .policies-sidebar {
+            position: sticky;
+            top: 90px;
+            height: fit-content;
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-header h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+            text-align: center;
+        }
+
+        .policies-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .policies-nav-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #6b7280;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+
+        .policy-nav-link:hover {
+            background: #f0fdf4;
+            color: #15803d;
+            border-left-color: #15803d;
+        }
+
+        .policy-nav-link.active {
+            background: #f0fdf4;
+            color: #15803d;
+            border-left-color: #15803d;
+            font-weight: 600;
+        }
+
+        /* Content Area */
+        .policies-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* Policy Section */
+        .policy-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            scroll-margin-top: 100px;
+        }
+
+        .policy-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .policy-icon {
+            width: 60px;
+            height: 60px;
+            background: #dcfce7;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .policy-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #15803d;
+        }
+
+        .policy-header h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #111827;
+            margin: 0;
+        }
+
+        /* Policy Content */
+        .policy-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .policy-statement h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #15803d;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .policy-statement p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        /* Expandable Sections */
+        .expandable-section {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .expand-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            background: #f9fafb;
+            border: none;
+            cursor: pointer;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #111827;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .expand-btn:hover {
+            background: #f0fdf4;
+            color: #15803d;
+        }
+
+        .expand-icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+
+        .expand-btn.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .expand-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .expand-content.show {
+            max-height: 1000px;
+            padding: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .policy-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .policy-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #4b5563;
+            line-height: 1.7;
+        }
+
+        .policy-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #15803d;
+            font-weight: bold;
+        }
+
+        .policy-list li strong {
+            color: #111827;
+        }
+
+        /* Policy CTA */
+        .policy-cta {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .policy-cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .policy-cta-container h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .policy-cta-container p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+
+        .policy-contact-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: #15803d;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+        }
+
+        .policy-contact-btn:hover {
+            background: #166534;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(21, 128, 61, 0.3);
+        }
+
+        .last-updated {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: #090c12e2;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .policies-container {
+                grid-template-columns: 1fr;
+            }
+
+            .policies-sidebar {
+                position: static;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .policies-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .policy-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .intro-content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .intro-text-content {
+                text-align: center;
+            }
+
+            .intro-text-content h2 {
+                font-size: 2rem;
+            }
+
+
+            .certifications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .policies-hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .policies-intro-container h2 {
+                font-size: 2rem;
+            }
+
+            .badge-icon {
+                width: 120px;
+                height: 120px;
+            }
+
+            .badge-title {
+                font-size: 1.25rem;
+            }
+
+            .badge-subtitle {
+                font-size: 1rem;
+            }
+
+            .intro-text-content h2 {
+                font-size: 1.75rem;
+            }
+
+            .policy-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+
+            .policies-sidebar,
+            .download-policies-btn,
+            .policy-cta,
+            nav,
+            footer {
+                display: none !important;
+            }
+
+            .policies-container {
+                grid-template-columns: 1fr;
+            }
+
+            .policy-section {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #e5e7eb;
+            }
+
+            .expand-content {
+                max-height: none !important;
+                display: block !important;
+            }
+        }
+
+        /*Mobile Layout */
+        @media (max-width: 768px) {
+            .side-nav {
+                width: 100%;
+                right: -100%;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top-header">
+        <div class="logo-section">
+            <img src="/assets/images/sevenhilllogo.svg" alt="Seven Hills Logo" class="logo-icon" />
+
+            <div class="logo-text-container">
+                <a href="/index.html">
+                    <div class="logo-title">SEVEN HILLS</div>
+                    <div class="logo-subtitle">FOOD SOLUTIONS</div>
+                </a>
+            </div>
+        </div>
+
+        <button class="menu-btn" onclick="toggleNav()" aria-label="Open menu">
+            <svg class="menu-icon" viewBox="0 0 24 24">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+        </button>
+    </header>
+
+
+    <!--Side nav-->
+    <nav class="side-nav" id="sideNav">
+        <button class="close-btn" onclick="toggleNav()" aria-label="Close menu">
+            <!--Close SVG-->
+            <svg viewBox="0 0 24 24">
+                <line x1="4" y1="4" x2="20" y2="20" />
+                <line x1="20" y1="4" x2="4" y2="20" />
+            </svg>
+        </button>
+
+        <ul class="nav-list">
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <!-- About icon -->
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 20c1.5-4 14.5-4 16 0" />
+                        </svg>
+                        <a href="/about/about-us.html">About Us</a>
+                    </span>
+
+                    <!-- Chevron icon (instead of ▾ text) -->
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+
+                <ul class="dropdown">
+                    <li><a href="/about/our-story.html">Our Story</a></li>
+                    <li><a href="/about/vision.html">Vision</a></li>
+                    <li><a href="/about/policies.html">Policies</a></li>
+                </ul>
+            </li>
+
+            <!-- SEED TO SHELF -->
+            <li>
+                <a href="/seed-to-shelf.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M12 2v20" />
+                        <path d="M5 10c7-2 9-4 14-6" />
+                    </svg>
+                    Seed to Shelf
+                </a>
+            </li>
+
+            <!-- OPERATIONS -->
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M3 9h18M9 21V9" />
+                        </svg>
+                        Operations
+                    </span>
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+                <ul class="dropdown">
+                    <li><a href="operations/quality-and-food-safety.html">Quality & Food Safety</a></li>
+                    <li><a href="operations/agriculture.html">Agriculture</a></li>
+                    <li><a href="operations/manufacturing.html">Manufacturing</a></li>
+                    <li><a href="operations/customers.html">Our Customers</a></li>
+                </ul>
+            </li>
+
+            <!-- Products -->
+            <li>
+                <a href="/products.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                        <path d="M3 10h18" />
+                        <path d="M8 14h3" />
+                        <path d="M13 14h3" />
+                    </svg>
+                    Products
+                </a>
+            </li>
+
+            <!-- CONTACT -->
+            <li>
+                <a href="/contact.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="M22 6l-10 7L2 6" />
+                    </svg>
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Policies Hero Section -->
+    <section class="policies-hero">
+        <div class="policies-hero-content">
+            <h1>Our Policies & Standards</h1>
+            <p>Guiding principles that ensure excellence at every step</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="policies-intro">
+        <div class="policies-intro-container">
+            <div class="intro-content-wrapper">
+                <!-- Left Side: Policy Badge -->
+                <div class="policy-badge-wrapper">
+                    <div class="policy-badge">
+                        <svg class="badge-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Shield outline -->
+                            <path d="M100 20 L160 50 L160 110 Q160 150 100 180 Q40 150 40 110 L40 50 Z" fill="#15803d"
+                                opacity="0.1" stroke="#15803d" stroke-width="3" />
+
+                            <!-- Inner shield -->
+                            <path d="M100 40 L145 60 L145 105 Q145 135 100 160 Q55 135 55 105 L55 60 Z" fill="white"
+                                stroke="#15803d" stroke-width="2" />
+
+                            <!-- Checkmark -->
+                            <path d="M75 100 L90 115 L125 80" fill="none" stroke="#15803d" stroke-width="8"
+                                stroke-linecap="round" stroke-linejoin="round" />
+
+                            <!-- Stars decoration -->
+                            <circle cx="100" cy="50" r="3" fill="#15803d" />
+                            <circle cx="80" cy="65" r="2" fill="#15803d" />
+                            <circle cx="120" cy="65" r="2" fill="#15803d" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Right Side: Content -->
+                <div class="intro-text-content">
+                    <h2>Our Commitment to Excellence</h2>
+                    <p>At Seven Hills Food Solutions, we believe that long-term success is built on clear values and
+                        responsible practices. Our policies guide every decision — from the farm gate to your warehouse.
+                    </p>
+                    <p><strong>We value and respect both the law of the land and the law of the destination as our basic
+                            mantra.</strong></p>
+                    <p>These comprehensive policies ensure transparency, quality, and compliance across all our
+                        operations, building trust with customers, partners, and stakeholders worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Policies Section with Side Navigation -->
+    <section class="policies-main">
+        <div class="policies-container">
+            <!-- Side Navigation -->
+            <nav class="policies-sidebar">
+                <div class="sidebar-header">
+                    <h3>Policies</h3>
+                </div>
+                <ul class="policies-nav-list">
+                    <li><a href="#quality-policy" class="policy-nav-link active">Quality Policy</a></li>
+                    <li><a href="#food-safety" class="policy-nav-link">Food Safety Policy</a></li>
+                    <li><a href="#ethical-business" class="policy-nav-link">Ethical Business Policy</a></li>
+                    <li><a href="#export-compliance" class="policy-nav-link">Export Compliance</a></li>
+                </ul>
+            </nav>
+
+            <!-- Content Area -->
+            <div class="policies-content">
+                <!-- Policy 1: Quality Policy -->
+                <div class="policy-section" id="quality-policy">
+                    <div class="policy-header">
+                        <div class="policy-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                        </div>
+                        <h2>Quality Policy</h2>
+                    </div>
+
+                    <div class="policy-content">
+                        <div class="policy-statement">
+                            <h4>Policy Statement</h4>
+                            <p>Seven Hills Food Solutions is committed to delivering products that consistently meet or
+                                exceed customer expectations and international quality standards. Quality is not just a
+                                goal it's embedded in every aspect of our operations.</p>
+                        </div>
+
+                        <div class="expandable-section">
+                            <button class="expand-btn" onclick="toggleExpand(this)">
+                                <span>Key Principles</span>
+                                <svg class="expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="expand-content">
+                                <ul class="policy-list">
+                                    <li><strong>Rigorous Testing:</strong> All products undergo multiple quality checks
+                                        from farm to final packaging</li>
+                                    <li><strong>Continuous Improvement:</strong> Regular audits and feedback loops drive
+                                        ongoing enhancement</li>
+                                    <li><strong>Modern Facilities:</strong> State-of-the-art processing units with
+                                        advanced quality control systems</li>
+                                    <li><strong>Trained Personnel:</strong> Skilled quality assurance teams with
+                                        international certifications</li>
+                                    <li><strong>Traceability:</strong> Complete tracking from seed to shelf ensures
+                                        accountability</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="expandable-section">
+                            <button class="expand-btn" onclick="toggleExpand(this)">
+                                <span>Standards & Certifications</span>
+                                <svg class="expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="expand-content">
+                                <ul class="policy-list">
+                                    <li>ISO 9001:2015 - Quality Management Systems</li>
+                                    <li>HACCP Certified Processing</li>
+                                    <li>FSSAI Licensed Facilities</li>
+                                    <li>International Export Standards Compliance</li>
+                                    <li>Regular Third-Party Audits</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Policy 2: Food Safety Policy -->
+                <div class="policy-section" id="food-safety">
+                    <div class="policy-header">
+                        <div class="policy-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <h2>Food Safety Policy</h2>
+                    </div>
+
+                    <div class="policy-content">
+                        <div class="policy-statement">
+                            <h4>Policy Statement</h4>
+                            <p>Food safety is our top priority. We maintain the highest standards of hygiene,
+                                sanitation, and safety protocols throughout our production chain to ensure every product
+                                is safe for consumption.</p>
+                        </div>
+
+                        <div class="expandable-section">
+                            <button class="expand-btn" onclick="toggleExpand(this)">
+                                <span>Safety Measures</span>
+                                <svg class="expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="expand-content">
+                                <ul class="policy-list">
+                                    <li><strong>HACCP Implementation:</strong> Systematic preventive approach to food
+                                        safety</li>
+                                    <li><strong>Contamination Prevention:</strong> Strict protocols to prevent physical,
+                                        chemical, and biological contamination</li>
+                                    <li><strong>Hygiene Standards:</strong> Regular sanitation of facilities, equipment,
+                                        and personnel hygiene monitoring</li>
+                                    <li><strong>Traceability Systems:</strong> Complete batch tracking for rapid
+                                        response if needed</li>
+                                    <li><strong>Testing Protocols:</strong> Regular microbiological and chemical testing
+                                        of products</li>
+                                    <li><strong>Temperature Control:</strong> Monitored cold chain from processing to
+                                        delivery</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="expandable-section">
+                            <button class="expand-btn" onclick="toggleExpand(this)">
+                                <span>Emergency Response</span>
+                                <svg class="expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="expand-content">
+                                <ul class="policy-list">
+                                    <li>Documented recall procedures</li>
+                                    <li>24/7 emergency response team</li>
+                                    <li>Customer notification protocols</li>
+                                    <li>Root cause analysis for incidents</li>
+                                    <li>Corrective and preventive action systems</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Policy 3: Ethical Business Policy -->
+                <div class="policy-section" id="ethical-business">
+                    <div class="policy-header">
+                        <div class="policy-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h2>Ethical Business Policy</h2>
+                    </div>
+
+                    <div class="policy-content">
+                        <div class="policy-statement">
+                            <h4>Policy Statement</h4>
+                            <p>Integrity and transparency form the foundation of our business. We are committed to
+                                ethical practices in all our dealings, respecting both the law of the land and the law
+                                of the destination.</p>
+                        </div>
+
+                        <div class="expandable-section">
+                            <button class="expand-btn" onclick="toggleExpand(this)">
+                                <span>Core Principles</span>
+                                <svg class="expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="expand-content">
+                                <ul class="policy-list">
+                                    <li><strong>Transparency:</strong> Honest communication with all stakeholders</li>
+                                    <li><strong>Fair Trade:</strong> Equitable pricing and treatment of suppliers and
+                                        partners</li>
+                                    <li><strong>Anti-Corruption:</strong> Zero tolerance for bribery or unethical
+                                        payments</li>
+                                    <li><strong>Compliance:</strong> Adherence to local laws and international
+                                        regulations</li>
+                                    <li><strong>Dual Legal Framework:</strong> Respect for both origin and destination
+                                        country laws</li>
+                                    <li><strong>Honest Representation:</strong> Accurate product information and claims
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="expandable-section">
+                            <button class="expand-btn" onclick="toggleExpand(this)">
+                                <span>Stakeholder Relations</span>
+                                <svg class="expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="expand-content">
+                                <ul class="policy-list">
+                                    <li>Fair contracts with farmers and suppliers</li>
+                                    <li>Timely payments and transparent terms</li>
+                                    <li>Respectful customer relationships</li>
+                                    <li>Open communication channels</li>
+                                    <li>Conflict resolution mechanisms</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Policy 4: Export Compliance -->
+                <div class="policy-section" id="export-compliance">
+                    <div class="policy-header">
+                        <div class="policy-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h2>Export Compliance Policy</h2>
+                    </div>
+
+                    <div class="policy-content">
+                        <div class="policy-statement">
+                            <h4>Policy Statement</h4>
+                            <p>As an international exporter, we maintain strict compliance with export regulations,
+                                customs requirements, and destination country laws. Our commitment to "law of land and
+                                law of destination" ensures seamless, legal trade operations.</p>
+                        </div>
+
+                        <div class="expandable-section">
+                            <button class="expand-btn" onclick="toggleExpand(this)">
+                                <span>Compliance Framework</span>
+                                <svg class="expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="expand-content">
+                                <ul class="policy-list">
+                                    <li><strong>Documentation Accuracy:</strong> Complete and truthful export
+                                        documentation</li>
+                                    <li><strong>Customs Compliance:</strong> Full adherence to customs regulations in
+                                        all jurisdictions</li>
+                                    <li><strong>Country-Specific Requirements:</strong> Research and compliance with
+                                        destination country rules</li>
+                                    <li><strong>Phytosanitary Certificates:</strong> Proper agricultural product
+                                        certifications</li>
+                                    <li><strong>Import Regulations:</strong> Understanding and meeting destination
+                                        import requirements</li>
+                                    <li><strong>Trade Sanctions:</strong> No trade with sanctioned entities or countries
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="expandable-section">
+                            <button class="expand-btn" onclick="toggleExpand(this)">
+                                <span>Documentation Standards</span>
+                                <svg class="expand-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div class="expand-content">
+                                <ul class="policy-list">
+                                    <li>Commercial invoices with accurate values</li>
+                                    <li>Packing lists and shipping documents</li>
+                                    <li>Certificates of origin</li>
+                                    <li>Health and phytosanitary certificates</li>
+                                    <li>Quality inspection reports</li>
+                                    <li>Insurance and shipping documentation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Contact CTA -->
+    <section class="policy-cta">
+        <div class="policy-cta-container">
+            <h2>Questions About Our Policies?</h2>
+            <p>Our team is here to provide clarification and additional information</p>
+            <a href="/contact.html" class="policy-contact-btn">Contact Us</a>
+            <p class="last-updated">Last Updated: December 2024</p>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Seven Hills</h4>
+                <p>Quality Food Solutions You Can Trust</p>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <div>About Us</div>
+                <div>Our Story</div>
+                <div>Vision</div>
+                <div>Policies</div>
+            </div>
+            <div class="footer-section">
+                <h4>Operations</h4>
+                <div>Agriculture</div>
+                <div>Manufacturing</div>
+                <div>Quality & Safety</div>
+                <div>Our Customers</div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div>Email: seventohillls@gmail.com</div>
+                <div>Phone: +91 9945398335</div>
+                <div>Location: Bengaluru, India</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seven Hills Food Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleNav() {
+            document.getElementById("sideNav").classList.toggle("open");
+        }
+        function toggleDropdown(el) {
+            el.parentElement.classList.toggle("active");
+        }
+
+        let lastScrollY = window.scrollY;
+        const header = document.querySelector(".top-header");
+
+        window.addEventListener("scroll", () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                // scrolling down
+                header.classList.add("hide");
+                header.classList.remove("show");
+            } else {
+                // scrolling up
+                header.classList.remove("hide");
+                header.classList.add("show");
+            }
+            lastScrollY = currentScrollY;
+        });
+
+        // Toggle expandable sections
+        function toggleExpand(button) {
+            const content = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+
+            button.classList.toggle('active');
+            content.classList.toggle('show');
+        }
+
+        // Smooth scroll and active link highlighting
+        document.querySelectorAll('.policy-nav-link').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove active class from all links
+                document.querySelectorAll('.policy-nav-link').forEach(function (l) {
+                    l.classList.remove('active');
+                });
+
+                // Add active class to clicked link
+                this.classList.add('active');
+
+                // Smooth scroll to section
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section on scroll
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('.policy-section');
+            const navLinks = document.querySelectorAll('.policy-nav-link');
+
+            let currentSection = '';
+
+            sections.forEach(function (section) {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 150)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(function (link) {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
