@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vision - Seven Hills Food Solutions</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vision - Seven Hills Food Solutions</title>
+  <style>
     * {
-        box-sizing: border-box;
+      box-sizing: border-box;
     }
+
     /* Body & typography */
     body {
-        margin: 0;
-        font-family: Inter, sans-serif;
-        color: #1e1e1e;
+      margin: 0;
+      font-family: Inter, sans-serif;
+      color: #1e1e1e;
     }
+
     .menu-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
     .close-btn {
@@ -70,10 +73,12 @@
       padding: 0;
       margin-top: 60px;
     }
-    .nav-list a{
-        text-decoration: none;
-        color:#1e1e1e;
+
+    .nav-list a {
+      text-decoration: none;
+      color: #1e1e1e;
     }
+
     .nav-list li {
       margin-bottom: 18px;
     }
@@ -120,6 +125,7 @@
     .has-dropdown.active .chevron-icon {
       transform: rotate(180deg);
     }
+
     /* Header*/
 
     .top-header {
@@ -139,14 +145,16 @@
     .top-header.hide {
       transform: translateY(-100%);
     }
+
     /* Visible state with separation */
     .top-header.show {
       transform: translateY(0);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
     }
+
     .top-header.scrolled {
       background: #ffffff;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     }
 
     /* Company name / logo */
@@ -172,35 +180,38 @@
     }
 
     .logo-text-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 0;
-        line-height: 1.1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+      line-height: 1.1;
     }
-    .logo-text-container a{
-        text-decoration: none;
+
+    .logo-text-container a {
+      text-decoration: none;
     }
+
     .logo-title {
-        font-family: 'Inter', sans-serif;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: rgba(0, 0, 0, 0.735);
-        letter-spacing: 0.02em;
-        margin: 0;
-        padding: 0;
-        line-height: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: rgba(0, 0, 0, 0.735);
+      letter-spacing: 0.02em;
+      margin: 0;
+      padding: 0;
+      line-height: 1;
     }
-    .logo-subtitle {    
-        font-family: 'Inter', sans-serif;
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #5D8A3A;
-        letter-spacing: 0.05em;
-        margin: 0;
-        padding: 0;
-        margin-top: 2px;
-        line-height: 1;
+
+    .logo-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #5D8A3A;
+      letter-spacing: 0.05em;
+      margin: 0;
+      padding: 0;
+      margin-top: 2px;
+      line-height: 1;
     }
 
     /*Side Nav */
@@ -211,7 +222,7 @@
       width: 320px;
       height: 100%;
       background: linear-gradient(to bottom right, #f0fdf4, white);
-      box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
       padding: 24px;
       transition: right 0.3s ease;
       z-index: 1000;
@@ -221,42 +232,40 @@
     .side-nav.open {
       right: 0;
     }
-    
+
     /* Page wrapper */
     .vision-page {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding-bottom: 5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-bottom: 5rem;
     }
-    
+
     /* Hero Banner */
     .vision-hero-banner {
-        position: relative;
-        height: 420px;
-        width: 1180px;
-        margin-left: 1rem;
-        margin-top: 8rem;
-        margin-bottom: 6rem;
-        border-radius: 28px;
-        overflow: hidden;
+      position: relative;
+      height: 420px;
+      width: 1180px;
+      margin-left: 1rem;
+      margin-top: 8rem;
+      margin-bottom: 6rem;
+      border-radius: 28px;
+      overflow: hidden;
     }
-    
+
     .vision-hero-image {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    
+
     .vision-hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-        to right,
-        rgba(15, 76, 129, 0.75),
-        rgba(21, 128, 61, 0.8)
-        );
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right,
+          rgba(15, 76, 129, 0.75),
+          rgba(21, 128, 61, 0.8));
     }
 
     .vision-hero-content {
@@ -282,7 +291,7 @@
     .vision-hero-content p {
       font-size: 1.4rem;
       line-height: 1.7;
-      color: rgba(255,255,255,0.95);
+      color: rgba(255, 255, 255, 0.95);
     }
 
     /* Pillars */
@@ -350,38 +359,44 @@
       line-height: 1.75;
       color: #14532d;
     }
+
     /* Footer */
     footer {
-        background: #090c12e2;
-        color: white;
-        padding: 3rem 1rem;
+      background: #090c12e2;
+      color: white;
+      padding: 3rem 1rem;
     }
+
     .footer-container {
-        max-width: 1280px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        margin-bottom: 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
+
     .footer-section h4 {
-        font-size: 1.25rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
     }
+
     .footer-section p,
     .footer-section div {
-        color: #9ca3af;
-        margin-bottom: 0.5rem;
+      color: #9ca3af;
+      margin-bottom: 0.5rem;
     }
+
     .footer-bottom {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding-top: 2rem;
-        border-top: 1px solid #374151;
-        text-align: center;
-        color: #9ca3af;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+      text-align: center;
+      color: #9ca3af;
     }
+
     /*Mobile Layout */
     @media (max-width: 768px) {
       .side-nav {
@@ -393,7 +408,8 @@
         font-size: 16px;
       }
     }
-        /* Responsive */
+
+    /* Responsive */
     @media (max-width: 768px) {
       .vision-cards {
         grid-template-columns: 1fr;
@@ -403,270 +419,281 @@
       .vision-card {
         padding-top: 6rem;
       }
+
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
     }
 
     @media (max-width: 480px) {
       .vision-hero p {
         font-size: 1.15rem;
       }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
     }
-    </style>
+  </style>
 </head>
+
 <body>
-    <header class="top-header">
-        <div class="logo-section">
-            <img src="/assets/images/sevenhilllogo.svg" alt="Seven Hills Logo" class="logo-icon"/>
-            
-            <div class="logo-text-container">
-                <a href="/index.html">
-                    <div class="logo-title">SEVEN HILLS</div>
-                    <div class="logo-subtitle">FOOD SOLUTIONS</div>
-                </a>
-            </div>
-        </div>
-        
-        <button class="menu-btn" onclick="toggleNav()" aria-label="Open menu">
-            <svg class="menu-icon" viewBox="0 0 24 24">
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-        </button>
-    </header>
+  <header class="top-header">
+    <div class="logo-section">
+      <img src="/assets/images/sevenhilllogo.svg" alt="Seven Hills Logo" class="logo-icon" />
 
-
-    <!--Side nav-->
-    <nav class="side-nav" id="sideNav">
-        <button class="close-btn" onclick="toggleNav()" aria-label="Close menu">
-            <!--Close SVG-->
-            <svg viewBox="0 0 24 24">
-                <line x1="4" y1="4" x2="20" y2="20"/>
-                <line x1="20" y1="4" x2="4" y2="20"/>
-            </svg>
-        </button>
-
-        <ul class="nav-list">
-            <li class="has-dropdown">
-                <div class="dropdown-header" onclick="toggleDropdown(this)">
-                    <span class="nav-item">
-                        <!-- About icon -->
-                         <svg class="nav-icon" viewBox="0 0 24 24">
-                            <circle cx="12" cy="8" r="4"/>
-                            <path d="M4 20c1.5-4 14.5-4 16 0"/>
-                        </svg>
-                        <a href="/about/about-us.html">About Us</a>
-                    </span>
-
-                    <!-- Chevron icon (instead of ▾ text) -->
-                    <svg class="chevron-icon" viewBox="0 0 24 24">
-                        <path d="M6 9l6 6 6-6"/>
-                    </svg>
-                </div>
-
-                <ul class="dropdown">
-                    <li><a href="/about/our-story.html">Our Story</a></li>
-                    <li><a href="/about/vision.html">Vision</a></li>
-                    <li><a href="/about/policies.html">Policies</a></li>
-                </ul>
-            </li>
-
-            <!-- SEED TO SHELF -->
-            <li>
-                <a href="/seed-to-shelf.html" class="nav-item">
-                    <svg class="nav-icon" viewBox="0 0 24 24">
-                        <path d="M12 2v20"/>
-                        <path d="M5 10c7-2 9-4 14-6"/>
-                    </svg>
-                    Seed to Shelf
-                </a>
-            </li>
-
-            <!-- OPERATIONS -->
-            <li class="has-dropdown">
-                <div class="dropdown-header" onclick="toggleDropdown(this)">
-                    <span class="nav-item">
-                        <svg class="nav-icon" viewBox="0 0 24 24">
-                            <rect x="3" y="3" width="18" height="18" rx="2"/>
-                            <path d="M3 9h18M9 21V9"/>
-                        </svg>
-                        Operations
-                    </span>
-                    <svg class="chevron-icon" viewBox="0 0 24 24">
-                        <path d="M6 9l6 6 6-6"/>
-                    </svg>
-                </div>
-                <ul class="dropdown">
-                    <li><a href="operations/quality-and-food-safety.html">Quality & Food Safety</a></li>
-                    <li><a href="operations/agriculture.html">Agriculture</a></li>
-                    <li><a href="operations/manufacturing.html">Manufacturing</a></li>
-                    <li><a href="operations/customers.html">Our Customers</a></li>
-                </ul>
-            </li>
-
-           <!-- Products -->
-            <li>
-                <a href="/products.html" class="nav-item">
-                    <svg class="nav-icon" viewBox="0 0 24 24">
-                        <rect x="3" y="4" width="18" height="16" rx="2"/>
-                        <path d="M3 10h18"/>
-                        <path d="M8 14h3"/>
-                        <path d="M13 14h3"/>
-                    </svg>
-                    Products
-                </a>                                                         
-            </li>
-            
-            <!-- CONTACT -->
-             <li>
-                <a href="/contact.html" class="nav-item">
-                    <svg class="nav-icon" viewBox="0 0 24 24">
-                        <rect x="2" y="4" width="20" height="16" rx="2" />
-                        <path d="M22 6l-10 7L2 6"/>
-                    </svg>
-                    Contact Us
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-     <main class="vision-page">
-
-  <!-- Vision Hero -->
-  <section class="vision-hero-banner">
-    <img class="vision-hero-image" alt="Vision background image">
-    <div class="vision-hero-overlay"></div>
-
-    <div class="vision-hero-content">
-      <h1>Our Vision</h1>
-      <p>
-        To become a trusted global supplier of preserved vegetables and niche food products
-        for leading retail, distribution, and food service partners.
-      </p>
+      <div class="logo-text-container">
+        <a href="/index.html">
+          <div class="logo-title">SEVEN HILLS</div>
+          <div class="logo-subtitle">FOOD SOLUTIONS</div>
+        </a>
+      </div>
     </div>
-  </section>
 
-  <!-- Vision Pillars -->
-  <section class="vision-cards">
-    
-    <div class="vision-card">
-        
-        <div class="vision-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <circle cx="12" cy="12" r="9" stroke-width="1.8"/>
-                <path d="M3 12h18M12 3c3 4 3 14 0 18" stroke-width="1.8"/>
+    <button class="menu-btn" onclick="toggleNav()" aria-label="Open menu">
+      <svg class="menu-icon" viewBox="0 0 24 24">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </header>
+
+
+  <!--Side nav-->
+  <nav class="side-nav" id="sideNav">
+    <button class="close-btn" onclick="toggleNav()" aria-label="Close menu">
+      <!--Close SVG-->
+      <svg viewBox="0 0 24 24">
+        <line x1="4" y1="4" x2="20" y2="20" />
+        <line x1="20" y1="4" x2="4" y2="20" />
+      </svg>
+    </button>
+
+    <ul class="nav-list">
+      <li class="has-dropdown">
+        <div class="dropdown-header" onclick="toggleDropdown(this)">
+          <span class="nav-item">
+            <!-- About icon -->
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c1.5-4 14.5-4 16 0" />
             </svg>
+            <a href="/about/about-us.html">About Us</a>
+          </span>
+
+          <!-- Chevron icon (instead of ▾ text) -->
+          <svg class="chevron-icon" viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
         </div>
-        
+
+        <ul class="dropdown">
+          <li><a href="/about/our-story.html">Our Story</a></li>
+          <li><a href="/about/vision.html">Vision</a></li>
+          <li><a href="/about/policies.html">Policies</a></li>
+        </ul>
+      </li>
+
+      <!-- SEED TO SHELF -->
+      <li>
+        <a href="/seed-to-shelf.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24">
+            <path d="M12 2v20" />
+            <path d="M5 10c7-2 9-4 14-6" />
+          </svg>
+          Seed to Shelf
+        </a>
+      </li>
+
+      <!-- OPERATIONS -->
+      <li class="has-dropdown">
+        <div class="dropdown-header" onclick="toggleDropdown(this)">
+          <span class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M9 21V9" />
+            </svg>
+            Operations
+          </span>
+          <svg class="chevron-icon" viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
+        <ul class="dropdown">
+          <li><a href="operations/quality-and-food-safety.html">Quality & Food Safety</a></li>
+          <li><a href="operations/agriculture.html">Agriculture</a></li>
+          <li><a href="operations/manufacturing.html">Manufacturing</a></li>
+          <li><a href="operations/customers.html">Our Customers</a></li>
+        </ul>
+      </li>
+
+      <!-- Products -->
+      <li>
+        <a href="/products.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="16" rx="2" />
+            <path d="M3 10h18" />
+            <path d="M8 14h3" />
+            <path d="M13 14h3" />
+          </svg>
+          Products
+        </a>
+      </li>
+
+      <!-- CONTACT -->
+      <li>
+        <a href="/contact.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="M22 6l-10 7L2 6" />
+          </svg>
+          Contact Us
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="vision-page">
+
+    <!-- Vision Hero -->
+    <section class="vision-hero-banner">
+      <img class="vision-hero-image" alt="Vision background image">
+      <div class="vision-hero-overlay"></div>
+
+      <div class="vision-hero-content">
+        <h1>Our Vision</h1>
+        <p>
+          To become a trusted global supplier of preserved vegetables and niche food products
+          for leading retail, distribution, and food service partners.
+        </p>
+      </div>
+    </section>
+
+    <!-- Vision Pillars -->
+    <section class="vision-cards">
+
+      <div class="vision-card">
+
+        <div class="vision-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="9" stroke-width="1.8" />
+            <path d="M3 12h18M12 3c3 4 3 14 0 18" stroke-width="1.8" />
+          </svg>
+        </div>
+
         <h3>Global Reach</h3>
         <p>
-            Serving international retail chains, distributors, and HORECA partners
-            across global markets.
+          Serving international retail chains, distributors, and HORECA partners
+          across global markets.
         </p>
-    </div>
-    
-    <div class="vision-card">
+      </div>
+
+      <div class="vision-card">
         <div class="vision-card-arc"></div>
-        
+
         <div class="vision-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M12 3l7 4v6c0 5-7 8-7 8s-7-3-7-8V7l7-4z" stroke-width="1.8"/>
-                <path d="M9 12l2 2 4-4" stroke-width="1.8"/>
-            </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 3l7 4v6c0 5-7 8-7 8s-7-3-7-8V7l7-4z" stroke-width="1.8" />
+            <path d="M9 12l2 2 4-4" stroke-width="1.8" />
+          </svg>
         </div>
-        
+
         <h3>Product Integrity</h3>
         <p>
-            Delivering preserved vegetables and niche products with uncompromised
-            quality and consistency.
+          Delivering preserved vegetables and niche products with uncompromised
+          quality and consistency.
         </p>
-    </div>
-    
-    <div class="vision-card">
+      </div>
+
+      <div class="vision-card">
         <div class="vision-card-arc"></div>
         <div class="vision-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M16 11V7a4 4 0 10-8 0v4" stroke-width="1.8"/>
-                <rect x="5" y="11" width="14" height="10" rx="2" stroke-width="1.8"/>
-            </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M16 11V7a4 4 0 10-8 0v4" stroke-width="1.8" />
+            <rect x="5" y="11" width="14" height="10" rx="2" stroke-width="1.8" />
+          </svg>
         </div>
-        
+
         <h3>Reliable Partnerships</h3>
         <p>
-            Building long-term relationships through transparency, reliability,
-            and trust.
+          Building long-term relationships through transparency, reliability,
+          and trust.
         </p>
-    </div>
-</section>
+      </div>
+    </section>
 
 
-<!-- Long-term Outlook -->
- <section class="vision-outlook-block">
-    <p>
+    <!-- Long-term Outlook -->
+    <section class="vision-outlook-block">
+      <p>
         As global food supply chains evolve, Seven Hills Food Solutions is committed
         to scaling responsibly while maintaining the highest standards in sourcing,
         processing, and delivery across markets.
-    </p>
-</section>
+      </p>
+    </section>
 
-</main>
+  </main>
 
-<!-- Footer -->
-    <footer id="contact">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h4>Seven Hills</h4>
-                <p>Quality Food Solutions You Can Trust</p>
-            </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <div>About Us</div>
-                <div>Our Story</div>
-                <div>Vision</div>
-                <div>Policies</div>
-            </div>
-            <div class="footer-section">
-                <h4>Operations</h4>
-                <div>Agriculture</div>
-                <div>Manufacturing</div>
-                <div>Quality & Safety</div>
-                <div>Our Customers</div>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <div>Email:  seventohillls@gmail.com</div>
-                <div>Phone: +91 9945398335</div>
-                <div>Location: Bengaluru, India</div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Seven Hills Food Solutions. All rights reserved.</p>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Seven Hills</h4>
+        <p>Quality Food Solutions You Can Trust</p>
+      </div>
+      <div class="footer-section">
+        <h4>Company</h4>
+        <div>About Us</div>
+        <div>Our Story</div>
+        <div>Vision</div>
+        <div>Policies</div>
+      </div>
+      <div class="footer-section">
+        <h4>Operations</h4>
+        <div>Agriculture</div>
+        <div>Manufacturing</div>
+        <div>Quality & Safety</div>
+        <div>Our Customers</div>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <div>Email: seventohillls@gmail.com</div>
+        <div>Phone: +91 9945398335</div>
+        <div>Location: Bengaluru, India</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Seven Hills Food Solutions. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <script>
-        function toggleNav() {
-            document.getElementById("sideNav").classList.toggle("open");
-        }
-        function toggleDropdown(el) {
-            el.parentElement.classList.toggle("active");
-        }
-    
-        let lastScrollY = window.scrollY;
-        const header = document.querySelector(".top-header");
-        
-        window.addEventListener("scroll", () => {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && currentScrollY > 80) {
-                // scrolling down
-                header.classList.add("hide");
-                header.classList.remove("show");
-            } else {
-                // scrolling up
-                header.classList.remove("hide");
-                header.classList.add("show");
-            }
-            lastScrollY = currentScrollY;
-        });
-    </script>
+  <script>
+    function toggleNav() {
+      document.getElementById("sideNav").classList.toggle("open");
+    }
+    function toggleDropdown(el) {
+      el.parentElement.classList.toggle("active");
+    }
+
+    let lastScrollY = window.scrollY;
+    const header = document.querySelector(".top-header");
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // scrolling down
+        header.classList.add("hide");
+        header.classList.remove("show");
+      } else {
+        // scrolling up
+        header.classList.remove("hide");
+        header.classList.add("show");
+      }
+      lastScrollY = currentScrollY;
+    });
+  </script>
 </body>
+
 </html>
