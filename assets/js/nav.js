@@ -31,7 +31,7 @@ window.addEventListener("scroll", () => {
 let currentSlide = 0;
 let autoPlayInterval;
 
-function swSlide(index) {
+function showSlide(index) {
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
     
@@ -50,10 +50,9 @@ function swSlide(index) {
     } else {
         currentSlide = index;
     }
+    slides[currentSlide].classList.add('active');
+    indicators[currentSlide].classList.add('active');
 }
-
-slides[currentSlide].classList.add('active');
-indicators[currentSlide].classList.add('active');
 
 function nextSlide() {
     showSlide(currentSlide + 1);
@@ -66,7 +65,9 @@ function resetAutoPlay() {
     clearInterval(autoPlayInterval);
     autoPlayInterval = setInterval(nextSlide, 5000);
 }
+
 autoPlayInterval = setInterval(nextSlide, 5000)
+
 document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
