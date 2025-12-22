@@ -351,7 +351,7 @@
 /* CTA Section */
 .cta {
     padding: 4rem 1rem;
-    background: linear-gradient(to right, #43c874, #158541);
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
     color: white;
 }
 .cta-container {
@@ -362,21 +362,23 @@
 .cta h2 {
     font-size: 2.5rem;
     font-weight: bold;
+    color: #111827;
     margin-bottom: 1.5rem;
 }
 .cta p {
     font-size: 1.25rem;
     margin-bottom: 2rem;
-    color: #dcfce7;
+    color: #6b7280;
 }
 .btn-cta {
-    background: white;
-    color: #15803d;
+    background: #15803d;
+    color: white;
     padding: 1rem 2rem;
     font-size: 1.125rem;
 }
 .btn-cta:hover {
-    background: #f3f4f6;
+   background: #166534;
+   transform: translateY(-1px);
 }
 
 /* Footer */
