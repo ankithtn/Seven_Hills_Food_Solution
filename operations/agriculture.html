@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture - Seven Hills Food Solutions</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Body & typography */
+        body {
+            margin: 0;
+            font-family: Inter, sans-serif;
+            color: #1e1e1e;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+
+        /*Icons */
+
+        .menu-icon {
+            width: 26px;
+            height: 26px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .close-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .nav-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            stroke: #1e1e1e;
+            stroke-width: 1.8;
+            fill: none;
+        }
+
+        .chevron-icon {
+            width: 18px;
+            height: 18px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.3s ease;
+        }
+
+        /* Nav items */
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 60px;
+        }
+
+        .nav-list li {
+            margin-bottom: 18px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: #1e1e1e;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            color: #1e1e1e;
+        }
+
+        /* Dropdowns */
+
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            list-style: none;
+            padding-left: 28px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .dropdown li {
+            margin-bottom: 10px;
+        }
+
+        .dropdown a {
+            text-decoration: none;
+            color: #444;
+            font-size: 15px;
+        }
+
+        .has-dropdown.active .dropdown {
+            display: block;
+        }
+
+        .has-dropdown.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Header*/
+
+        .top-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fef9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 999;
+        }
+
+        /* Hidden when scrolling down */
+        .top-header.hide {
+            transform: translateY(-100%);
+        }
+
+        /* Visible state with separation */
+        .top-header.show {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .top-header.scrolled {
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Company name / logo */
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0rem;
+        }
+
+        .logo-icon {
+            width: 75px;
+            height: 75px;
+            flex-shrink: 0;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
+            line-height: 1.1;
+        }
+
+        .logo-text-container a {
+            text-decoration: none;
+        }
+
+        .logo-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.735);
+            letter-spacing: 0.02em;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #5D8A3A;
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0;
+            margin-top: 2px;
+            line-height: 1;
+        }
+
+        /*Side Nav */
+        .side-nav {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 320px;
+            height: 100%;
+            background: linear-gradient(to bottom right, #f0fdf4, white);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .side-nav.open {
+            right: 0;
+        }
+
+        /* Agriculture Hero */
+        .agriculture-hero {
+            position: relative;
+            background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
+            padding: 10rem 2rem 5rem;
+            margin-top: 70px;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .agriculture-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .agriculture-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge svg {
+            width: 50px;
+            height: 50px;
+            color: white;
+        }
+
+        .agriculture-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .agriculture-hero-content p {
+            font-size: 1.5rem;
+            color: #dcfce7;
+        }
+
+        /* Container */
+        .agriculture-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Introduction Section */
+        .agriculture-intro {
+            padding: 5rem 1rem;
+            background: white;
+        }
+
+        .intro-content-wrapper {
+            display: grid;
+            gap: 4rem;
+        }
+
+        .intro-text h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .lead-text {
+            font-size: 1.25rem;
+            color: #15803d;
+            font-weight: 600;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .ag-stat-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 2px solid #15803d;
+            transition: all 0.3s;
+        }
+
+        .ag-stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(21, 128, 61, 0.15);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .stat-icon svg {
+            width: 30px;
+            height: 30px;
+            color: #15803d;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #15803d;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #166534;
+            font-weight: 600;
+        }
+
+        /* Section Headers */
+        .section-header-center {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .section-header-center h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .section-header-center p {
+            font-size: 1.125rem;
+            color: #6b7280;
+        }
+
+        /* Contract Farming Section */
+        .contract-farming {
+            padding: 5rem 1rem;
+            background: #f9fafb;
+        }
+
+        .contract-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contract-image {
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 500px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contract-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contract-text p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .contract-benefits {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #15803d;
+            margin-top: 2rem;
+        }
+
+        .contract-benefits h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .benefits-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #4b5563;
+            font-size: 1rem;
+        }
+
+        .benefits-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #15803d;
+            font-weight: bold;
+        }
+
+        /* Regional Coverage */
+        .regional-coverage {
+            padding: 5rem 1rem;
+            background: white;
+        }
+
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .region-card {
+            background: linear-gradient(135deg, #f9fafb 0%, white 100%);
+            padding: 3rem 2.5rem;
+            border-radius: 1rem;
+            border: 2px solid #e5e7eb;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .region-card:hover {
+            border-color: #15803d;
+            box-shadow: 0 10px 30px rgba(21, 128, 61, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .region-icon {
+            width: 80px;
+            height: 80px;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .region-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #15803d;
+        }
+
+        .region-card h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .region-card p {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        .region-highlight {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .region-highlight span {
+            display: inline-block;
+            background: #15803d;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Farming Practices */
+        .farming-practices {
+            padding: 5rem 1rem;
+            background: linear-gradient(135deg, #f0fdf4 0%, white 100%);
+        }
+
+        .practices-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .practice-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 1rem;
+            border: 2px solid #e5e7eb;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .practice-card:hover {
+            border-color: #15803d;
+            box-shadow: 0 8px 24px rgba(21, 128, 61, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .practice-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #15803d;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.125rem;
+        }
+
+        .practice-icon {
+            width: 70px;
+            height: 70px;
+            background: #dcfce7;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .practice-icon svg {
+            width: 35px;
+            height: 35px;
+            color: #15803d;
+        }
+
+        .practice-card h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .practice-card p {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* Harvest Timeline */
+        .harvest-timeline {
+            padding: 5rem 1rem;
+            background: white;
+        }
+
+        .timeline-wrapper {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+        }
+
+        .semester-card {
+            background: linear-gradient(135deg, #f9fafb 0%, white 100%);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+
+        .semester-card:hover {
+            border-color: #15803d;
+            box-shadow: 0 8px 24px rgba(21, 128, 61, 0.1);
+        }
+
+        .semester-badge {
+            display: inline-block;
+            background: #15803d;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .semester-content h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .semester-content>p {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .semester-details {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f0fdf4;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .detail-item svg {
+            width: 20px;
+            height: 20px;
+            color: #15803d;
+        }
+
+        .detail-item span {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #166534;
+        }
+
+        .timeline-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-divider svg {
+            width: 40px;
+            height: 40px;
+            color: #15803d;
+        }
+
+        .annual-summary {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border: 2px solid #15803d;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .summary-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .summary-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #15803d;
+        }
+
+        .summary-text h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-text p {
+            font-size: 1rem;
+            color: #166534;
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+        }
+
+        .image-placeholder svg {
+            width: 100px;
+            height: 100px;
+            color: #15803d;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        .image-placeholder p {
+            color: #15803d;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #090c12e2;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /*Mobile Layout */
+        @media (max-width: 768px) {
+            .side-nav {
+                width: 100%;
+                right: -100%;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .practices-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Responsive*/
+        @media (max-width: 768px) {
+            .agriculture-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .intro-stats-grid,
+            .regions-grid,
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+
+            .contract-content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-divider {
+                transform: rotate(90deg);
+            }
+
+            .annual-summary {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contract-image {
+                height: 300px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top-header">
+        <div class="logo-section">
+            <img src="/assets/images/sevenhilllogo.svg" alt="Seven Hills Logo" class="logo-icon" />
+
+            <div class="logo-text-container">
+                <a href="/index.html">
+                    <div class="logo-title">SEVEN HILLS</div>
+                    <div class="logo-subtitle">FOOD SOLUTIONS</div>
+                </a>
+            </div>
+        </div>
+
+        <button class="menu-btn" onclick="toggleNav()" aria-label="Open menu">
+            <svg class="menu-icon" viewBox="0 0 24 24">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+        </button>
+    </header>
+
+
+    <!--Side nav-->
+    <nav class="side-nav" id="sideNav">
+        <button class="close-btn" onclick="toggleNav()" aria-label="Close menu">
+            <!--Close SVG-->
+            <svg viewBox="0 0 24 24">
+                <line x1="4" y1="4" x2="20" y2="20" />
+                <line x1="20" y1="4" x2="4" y2="20" />
+            </svg>
+        </button>
+
+        <ul class="nav-list">
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <!-- About icon -->
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 20c1.5-4 14.5-4 16 0" />
+                        </svg>
+                        <a href="/about/about-us.html">About Us</a>
+                    </span>
+
+                    <!-- Chevron icon (instead of ▾ text) -->
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+
+                <ul class="dropdown">
+                    <li><a href="/about/our-story.html">Our Story</a></li>
+                    <li><a href="/about/vision.html">Vision</a></li>
+                    <li><a href="/about/policies.html">Policies</a></li>
+                </ul>
+            </li>
+
+
+            <!-- SEED TO SHELF -->
+            <li>
+                <a href="/seed-to-shelf.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M6 18C10 16 12 12 12 8C12 4.5 15.5 2.5 18.5 4C21.5 5.5 22 9.5 19.5 12C17.5 14 14.5 13.5 13.5 11.5C13 10 14 8.5 15.5 8.5"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="4" cy="19" r="2" fill="currentColor" />
+                    </svg>
+                    Seed to Shelf
+                </a>
+            </li>
+
+            <!-- OPERATIONS -->
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M3 9h18M9 21V9" />
+                        </svg>
+                        Operations
+                    </span>
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+                <ul class="dropdown">
+                    <li><a href="/operations/quality-and-food-safety.html">Quality & Food Safety</a></li>
+                    <li><a href="/operations/agriculture.html">Agriculture</a></li>
+                    <li><a href="/operations/manufacturing.html">Manufacturing</a></li>
+                    <li><a href="/operations/customers.html">Our Customers</a></li>
+                </ul>
+            </li>
+
+            <!-- Products -->
+            <li>
+                <a href="/products.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                        <path d="M3 10h18" />
+                        <path d="M8 14h3" />
+                        <path d="M13 14h3" />
+                    </svg>
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="/our-markets.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M3 12h18" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M12 3c3.5 4 3.5 14 0 18" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M12 3c-3.5 4-3.5 14 0 18" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                    Our Markets
+                </a>
+            </li>
+
+            <li>
+                <a href="/sustainability.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 4c-6 0-12 3-14 8-1.5 3.5 1 7 4.5 7 5 0 9.5-6 9.5-15z" stroke="currentColor"
+                            stroke-width="1.8" />
+                        <path d="M6 15c2-1 4-1 6 0" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                    Sustainability
+                </a>
+            </li>
+
+            <!-- CONTACT -->
+            <li>
+                <a href="/contact.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="M22 6l-10 7L2 6" />
+                    </svg>
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Agriculture Hero -->
+    <section class="agriculture-hero">
+        <div class="agriculture-hero-overlay"></div>
+        <div class="agriculture-hero-content">
+            <div class="hero-badge">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h1>Agriculture</h1>
+            <p>Sustainable farming practices from seed to harvest</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="agriculture-intro">
+        <div class="agriculture-container">
+            <div class="intro-content-wrapper">
+                <div class="intro-text">
+                    <h2>Growing Excellence Across South India</h2>
+                    <p class="lead-text">Our agricultural operations span across Karnataka and Tamil Nadu, where we
+                        partner with local farmers through contract farming agreements. This collaborative approach
+                        ensures consistent quality while supporting farming communities.</p>
+                    <p>Every vegetable we grow follows stringent agricultural practices, from soil preparation to
+                        harvest, ensuring that only the best produce reaches our processing facilities.</p>
+                </div>
+                <div class="intro-stats-grid">
+                    <div class="ag-stat-card">
+                        <div class="stat-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                        </div>
+                        <div class="stat-number">1000</div>
+                        <div class="stat-label">Acres Annually</div>
+                    </div>
+                    <div class="ag-stat-card">
+                        <div class="stat-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">States Covered</div>
+                    </div>
+                    <div class="ag-stat-card">
+                        <div class="stat-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Harvest Semesters</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contract Farming Section -->
+    <section class="contract-farming">
+        <div class="agriculture-container">
+            <div class="section-header-center">
+                <span class="section-badge">Our Model</span>
+                <h2>Contract Farming Excellence</h2>
+                <p>Partnership-driven agriculture across South India</p>
+            </div>
+
+            <div class="contract-content-grid">
+                <div class="contract-image">
+                    <img src="../images/contract-farming.jpg" alt="Contract Farming"
+                        onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'><svg fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\'/></svg><p>Contract Farming</p></div>'">
+                </div>
+
+                <div class="contract-text">
+                    <p><strong>Seven Hills implements contract farming of vegetables spread over South India in the 2
+                            states of Karnataka and Tamil Nadu.</strong> This model ensures quality control from the
+                        very beginning of the cultivation process.</p>
+
+                    <p>Annually, in two semesters, 1000 acres of crop is cultivated under contract farming in these 2
+                        states, providing consistent supply and supporting local farming communities with guaranteed
+                        procurement.</p>
+
+                    <div class="contract-benefits">
+                        <h4>Contract Farming Benefits:</h4>
+                        <ul class="benefits-list">
+                            <li>Guaranteed market for farmers</li>
+                            <li>Technical support and guidance</li>
+                            <li>Quality seed and input supply</li>
+                            <li>Fair and transparent pricing</li>
+                            <li>Timely payments to farmers</li>
+                            <li>Reduced market risk</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regional Coverage Map -->
+    <section class="regional-coverage">
+        <div class="agriculture-container">
+            <div class="section-header-center">
+                <span class="section-badge">Our Reach</span>
+                <h2>South India Operations</h2>
+                <p>Strategic farming locations across Karnataka & Tamil Nadu</p>
+            </div>
+
+            <div class="regions-grid">
+                <div class="region-card">
+                    <div class="region-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3>Karnataka</h3>
+                    <p>Primary farming region with extensive acreage across multiple districts. Ideal climate and soil
+                        conditions for vegetable cultivation.</p>
+                    <div class="region-highlight">
+                        <span>Major Hub</span>
+                    </div>
+                </div>
+
+                <div class="region-card">
+                    <div class="region-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3>Tamil Nadu</h3>
+                    <p>Strategic farming locations with favorable growing conditions. Contributes significantly to our
+                        annual production capacity.</p>
+                    <div class="region-highlight">
+                        <span>Growing Region</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Farming Practices Section -->
+    <section class="farming-practices">
+        <div class="agriculture-container">
+            <div class="section-header-center">
+                <span class="section-badge">Our Methods</span>
+                <h2>Advanced Farming Practices</h2>
+                <p>Compliant with international standards</p>
+            </div>
+
+            <div class="practices-grid">
+                <div class="practice-card">
+                    <div class="practice-number">01</div>
+                    <div class="practice-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h4>Cluster Sowing Method</h4>
+                    <p>Our produce is cultivated under cluster sowing method, ensuring uniform growth, efficient
+                        resource utilization, and easier management of crops.</p>
+                </div>
+
+                <div class="practice-card">
+                    <div class="practice-number">02</div>
+                    <div class="practice-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h4>International Compliance</h4>
+                    <p>Package of practice for usage of pesticides and fertilizers meets USFDA and European Union (EU)
+                        regulations/norms, ensuring export readiness.</p>
+                </div>
+
+                <div class="practice-card">
+                    <div class="practice-number">03</div>
+                    <div class="practice-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h4>Efficient Lead Time</h4>
+                    <p>Our produce undergoes a short and efficient lead time between harvest to processing, ensuring
+                        maximum freshness and nutritional value retention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Harvest Timeline -->
+    <section class="harvest-timeline">
+        <div class="agriculture-container">
+            <div class="section-header-center">
+                <span class="section-badge">Annual Cycle</span>
+                <h2>Two-Semester Cultivation</h2>
+                <p>Strategic planning for year-round supply</p>
+            </div>
+
+            <div class="timeline-wrapper">
+                <div class="semester-card">
+                    <div class="semester-badge">Semester 1</div>
+                    <div class="semester-content">
+                        <h3>First Harvest Cycle</h3>
+                        <p>Primary cultivation period with optimal growing conditions. Covers 500 acres across Karnataka
+                            and Tamil Nadu.</p>
+                        <div class="semester-details">
+                            <div class="detail-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>6-Month Cycle</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span>500 Acres</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-divider">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </div>
+
+                <div class="semester-card">
+                    <div class="semester-badge">Semester 2</div>
+                    <div class="semester-content">
+                        <h3>Second Harvest Cycle</h3>
+                        <p>Complementary cultivation period ensuring consistent annual supply. Another 500 acres
+                            cultivated with crop rotation benefits.</p>
+                        <div class="semester-details">
+                            <div class="detail-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>6-Month Cycle</span>
+                            </div>
+                            <div class="detail-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span>500 Acres</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="annual-summary">
+                <div class="summary-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                </div>
+                <div class="summary-text">
+                    <h4>Total Annual Production</h4>
+                    <p>1000 acres cultivated annually across two semesters, ensuring consistent supply and optimal land
+                        utilization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Seven Hills</h4>
+                <p>Quality Food Solutions You Can Trust</p>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <div>About Us</div>
+                <div>Our Story</div>
+                <div>Vision</div>
+                <div>Policies</div>
+            </div>
+            <div class="footer-section">
+                <h4>Operations</h4>
+                <div>Agriculture</div>
+                <div>Manufacturing</div>
+                <div>Quality & Safety</div>
+                <div>Our Customers</div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div>Email: seventohillls@gmail.com</div>
+                <div>Phone: +91 9945398335</div>
+                <div>Location: Bengaluru, India</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seven Hills Food Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleNav() {
+            document.getElementById("sideNav").classList.toggle("open");
+        }
+        function toggleDropdown(el) {
+            el.parentElement.classList.toggle("active");
+        }
+
+        let lastScrollY = window.scrollY;
+        const header = document.querySelector(".top-header");
+
+        window.addEventListener("scroll", () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                // scrolling down
+                header.classList.add("hide");
+                header.classList.remove("show");
+            } else {
+                // scrolling up
+                // header.classList.remove("hide");
+                header.classList.add("show");
+            }
+
+            lastScrollY = currentScrollY;
+        });
+    </script>
+</body>
+
+</html>
