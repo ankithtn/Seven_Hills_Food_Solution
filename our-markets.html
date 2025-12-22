@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Markets - Seven Hills Food Solution</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Body & typography */
+        body {
+            margin: 0;
+            font-family: Inter, sans-serif;
+            color: #1e1e1e;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+
+        /*Icons */
+
+        .menu-icon {
+            width: 26px;
+            height: 26px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .close-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .nav-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            stroke: #1e1e1e;
+            stroke-width: 1.8;
+            fill: none;
+        }
+
+        .chevron-icon {
+            width: 18px;
+            height: 18px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.3s ease;
+        }
+
+        /* Nav items */
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 60px;
+        }
+
+        .nav-list li {
+            margin-bottom: 18px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: #1e1e1e;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            color: #1e1e1e;
+        }
+
+        /* Dropdowns */
+
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            list-style: none;
+            padding-left: 28px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .dropdown li {
+            margin-bottom: 10px;
+        }
+
+        .dropdown a {
+            text-decoration: none;
+            color: #444;
+            font-size: 15px;
+        }
+
+        .has-dropdown.active .dropdown {
+            display: block;
+        }
+
+        .has-dropdown.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Header*/
+
+        .top-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fef9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 999;
+        }
+
+        /* Hidden when scrolling down */
+        .top-header.hide {
+            transform: translateY(-100%);
+        }
+
+        /* Visible state with separation */
+        .top-header.show {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .top-header.scrolled {
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Company name / logo */
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0rem;
+        }
+
+        .logo-icon {
+            width: 75px;
+            height: 75px;
+            flex-shrink: 0;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
+            line-height: 1.1;
+        }
+
+        .logo-text-container a {
+            text-decoration: none;
+        }
+
+        .logo-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.735);
+            letter-spacing: 0.02em;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #5D8A3A;
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0;
+            margin-top: 2px;
+            line-height: 1;
+        }
+
+        /*Side Nav */
+        .side-nav {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 320px;
+            height: 100%;
+            background: linear-gradient(to bottom right, #f0fdf4, white);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .side-nav.open {
+            right: 0;
+        }
+
+        /* Markets Hero */
+        .markets-hero {
+            position: relative;
+            background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
+            padding: 10rem 2rem 5rem;
+            margin-top: 70px;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .markets-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .markets-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge svg {
+            width: 50px;
+            height: 50px;
+            color: white;
+        }
+
+        .markets-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .markets-hero-content p {
+            font-size: 1.5rem;
+            color: #dcfce7;
+        }
+
+        /* Container */
+        .markets-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Introduction */
+        .markets-intro {
+            padding: 5rem 1rem;
+            background: white;
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .intro-content h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .lead-text {
+            font-size: 1.25rem;
+            color: #15803d;
+            font-weight: 600;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-content p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        .market-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .market-stat {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 2.5rem 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 2px solid #15803d;
+            transition: all 0.3s;
+        }
+
+        .market-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(21, 128, 61, 0.15);
+        }
+
+        .market-stat .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .market-stat .stat-icon svg {
+            width: 30px;
+            height: 30px;
+            color: #15803d;
+        }
+
+        .market-stat .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #15803d;
+            margin-bottom: 0.5rem;
+        }
+
+        .market-stat .stat-label {
+            font-size: 1rem;
+            color: #166534;
+            font-weight: 600;
+        }
+
+        /* Section Headers */
+        .section-header-left {
+            margin-bottom: 3rem;
+        }
+
+        .section-header-center {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .section-badge.india {
+            background: linear-gradient(135deg, #FF9933 0%, #138808 50%, #000080 100%);
+            color: white;
+        }
+
+        .section-header-left h2,
+        .section-header-center h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .section-header-left p,
+        .section-header-center p {
+            font-size: 1.125rem;
+            color: #6b7280;
+        }
+
+        /* International Markets */
+        .international-markets {
+            padding: 5rem 1rem;
+            background: #f9fafb;
+        }
+
+        .international-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .market-content .market-description {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .market-content p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .regions-served {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #15803d;
+        }
+
+        .regions-served h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .regions-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .region-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 2rem;
+            border: 2px solid #15803d;
+        }
+
+        .region-tag svg {
+            width: 18px;
+            height: 18px;
+            color: #15803d;
+        }
+
+        .region-tag span {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #166534;
+        }
+
+        /* Retail Partners */
+        .retail-partners {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .retail-partners h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .partner-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f9fafb 0%, white 100%);
+            border-radius: 0.75rem;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+
+        .partner-card:hover {
+            border-color: #15803d;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(21, 128, 61, 0.1);
+        }
+
+        .partner-logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .partner-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        /* India Markets */
+        .india-markets {
+            padding: 5rem 1rem;
+            background: white;
+        }
+
+        .india-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .india-image {
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 500px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .india-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .india-content .market-description {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .india-content>p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .india-channels {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .channel-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+            padding: 1.5rem;
+            background: #f9fafb;
+            border-radius: 0.75rem;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+
+        .channel-item:hover {
+            border-color: #15803d;
+            background: #f0fdf4;
+        }
+
+        .channel-icon {
+            width: 50px;
+            height: 50px;
+            background: #dcfce7;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .channel-icon svg {
+            width: 25px;
+            height: 25px;
+            color: #15803d;
+        }
+
+        .channel-text h5 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .channel-text p {
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+        }
+
+        .image-placeholder svg {
+            width: 100px;
+            height: 100px;
+            color: #15803d;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        .image-placeholder p {
+            color: #15803d;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #090c12e2;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /*Mobile Layout */
+        @media (max-width: 768px) {
+            .side-nav {
+                width: 100%;
+                right: -100%;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .channels-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Responsive*/
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .markets-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .market-stats,
+            .international-grid,
+            .india-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .retail-partners {
+                position: static;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .india-image {
+                height: 300px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top-header">
+        <div class="logo-section">
+            <img src="/assets/images/sevenhilllogo.svg" alt="Seven Hills Logo" class="logo-icon" />
+
+            <div class="logo-text-container">
+                <a href="/index.html">
+                    <div class="logo-title">SEVEN HILLS</div>
+                    <div class="logo-subtitle">FOOD SOLUTIONS</div>
+                </a>
+            </div>
+        </div>
+
+        <button class="menu-btn" onclick="toggleNav()" aria-label="Open menu">
+            <svg class="menu-icon" viewBox="0 0 24 24">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+        </button>
+    </header>
+
+
+    <!--Side nav-->
+    <nav class="side-nav" id="sideNav">
+        <button class="close-btn" onclick="toggleNav()" aria-label="Close menu">
+            <!--Close SVG-->
+            <svg viewBox="0 0 24 24">
+                <line x1="4" y1="4" x2="20" y2="20" />
+                <line x1="20" y1="4" x2="4" y2="20" />
+            </svg>
+        </button>
+
+        <ul class="nav-list">
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <!-- About icon -->
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 20c1.5-4 14.5-4 16 0" />
+                        </svg>
+                        <a href="/about/about-us.html">About Us</a>
+                    </span>
+
+                    <!-- Chevron icon (instead of ▾ text) -->
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+
+                <ul class="dropdown">
+                    <li><a href="/about/our-story.html">Our Story</a></li>
+                    <li><a href="/about/vision.html">Vision</a></li>
+                    <li><a href="/about/policies.html">Policies</a></li>
+                </ul>
+            </li>
+
+
+            <!-- SEED TO SHELF -->
+            <li>
+                <a href="/seed-to-shelf.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M6 18C10 16 12 12 12 8C12 4.5 15.5 2.5 18.5 4C21.5 5.5 22 9.5 19.5 12C17.5 14 14.5 13.5 13.5 11.5C13 10 14 8.5 15.5 8.5"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="4" cy="19" r="2" fill="currentColor" />
+                    </svg>
+                    Seed to Shelf
+                </a>
+            </li>
+
+            <!-- OPERATIONS -->
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M3 9h18M9 21V9" />
+                        </svg>
+                        Operations
+                    </span>
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+                <ul class="dropdown">
+                    <li><a href="/operations/quality-and-food-safety.html">Quality & Food Safety</a></li>
+                    <li><a href="/operations/agriculture.html">Agriculture</a></li>
+                    <li><a href="/operations/manufacturing.html">Manufacturing</a></li>
+                    <li><a href="/operations/customers.html">Our Customers</a></li>
+                </ul>
+            </li>
+
+            <!-- Products -->
+            <li>
+                <a href="/products.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                        <path d="M3 10h18" />
+                        <path d="M8 14h3" />
+                        <path d="M13 14h3" />
+                    </svg>
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="/our-markets.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M3 12h18" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M12 3c3.5 4 3.5 14 0 18" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M12 3c-3.5 4-3.5 14 0 18" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                    Our Markets
+                </a>
+            </li>
+
+            <li>
+                <a href="/sustainability.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 4c-6 0-12 3-14 8-1.5 3.5 1 7 4.5 7 5 0 9.5-6 9.5-15z" stroke="currentColor"
+                            stroke-width="1.8" />
+                        <path d="M6 15c2-1 4-1 6 0" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                    Sustainability
+                </a>
+            </li>
+
+            <!-- CONTACT -->
+            <li>
+                <a href="/contact.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="M22 6l-10 7L2 6" />
+                    </svg>
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Markets Hero -->
+    <section class="markets-hero">
+        <div class="markets-hero-overlay"></div>
+        <div class="markets-hero-content">
+            <div class="hero-badge">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h1>Our Markets</h1>
+            <p>Serving customers across continents, from local stores to global chains</p>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="markets-intro">
+        <div class="markets-container">
+            <div class="intro-content">
+                <h2>From Local to Global</h2>
+                <p class="lead-text">Seven Hills products reach millions of consumers worldwide from neighborhood
+                    supermarkets to international retail giants, from gourmet stores to quick-service restaurants.</p>
+                <p>Our commitment to quality has earned us shelf space in some of the world's most prestigious retail
+                    chains and the trust of leading food service companies across continents.</p>
+            </div>
+
+            <div class="market-stats">
+                <div class="market-stat">
+                    <div class="stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+
+                <div class="market-stat">
+                    <div class="stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <div class="stat-number">Global</div>
+                    <div class="stat-label">Retail Chains</div>
+                </div>
+
+                <div class="market-stat">
+                    <div class="stat-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="stat-number">Millions</div>
+                    <div class="stat-label">Consumers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- International Markets Section -->
+    <section class="international-markets">
+        <div class="markets-container">
+            <div class="section-header-left">
+                <span class="section-badge">International</span>
+                <h2>Global Presence</h2>
+                <p>Trusted by leading retailers and food service companies worldwide</p>
+            </div>
+
+            <div class="international-grid">
+                <div class="market-content">
+                    <p class="market-description"><strong>Our customers have global presence including EU and US, China,
+                            Russia and Middle East countries</strong> and our products can be found in the top retail
+                        chains.</p>
+
+                    <p>On the shelves of all the major retailers, food service companies and major QSR's across the
+                        globe, Seven Hills products are recognized for quality and consistency.</p>
+
+                    <div class="regions-served">
+                        <h4>Regions We Serve:</h4>
+                        <div class="regions-list">
+                            <div class="region-tag">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>European Union</span>
+                            </div>
+                            <div class="region-tag">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>United States</span>
+                            </div>
+                            <div class="region-tag">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>China</span>
+                            </div>
+                            <div class="region-tag">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Russia</span>
+                            </div>
+                            <div class="region-tag">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Middle East</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="retail-partners">
+                    <h4>Top Retail Partners</h4>
+                    <div class="partners-grid">
+                        <div class="partner-card">
+                            <div class="partner-logo">MC</div>
+                            <div class="partner-name">MOTOR CAR</div>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-logo">ED</div>
+                            <div class="partner-name">EDEKA</div>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-logo">MT</div>
+                            <div class="partner-name">METRO</div>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-logo">LD</div>
+                            <div class="partner-name">LIDL</div>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-logo">BD</div>
+                            <div class="partner-name">BIEDRONKA</div>
+                        </div>
+                        <div class="partner-card">
+                            <div class="partner-logo">QSR</div>
+                            <div class="partner-name">Other QSR Chains</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- India Markets Section -->
+    <section class="india-markets">
+        <div class="markets-container">
+            <div class="section-header-left">
+                <span class="section-badge india">India</span>
+                <h2>Serving India</h2>
+                <p>From neighborhood stores to national restaurant chains</p>
+            </div>
+
+            <div class="india-grid">
+                <div class="india-image">
+                    <img src="../images/india-market.jpg" alt="Indian Market"
+                        onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'><svg fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6\'/></svg><p>Indian Market</p></div>'">
+                </div>
+
+                <div class="india-content">
+                    <p class="market-description"><strong>In India, we are available under Hotels, Restaurants and Quick
+                            Service Restaurant (QSR) chains across India.</strong></p>
+
+                    <p>From the shelves of your neighborhood supermarket to gourmet stores to the kitchens of pizza and
+                        sandwich companies—Seven Hills products are a trusted choice for quality and taste.</p>
+
+                    <div class="india-channels">
+                        <div class="channel-item">
+                            <div class="channel-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                            </div>
+                            <div class="channel-text">
+                                <h5>Hotels & Restaurants</h5>
+                                <p>Supplying premium establishments nationwide</p>
+                            </div>
+                        </div>
+
+                        <div class="channel-item">
+                            <div class="channel-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                            </div>
+                            <div class="channel-text">
+                                <h5>Supermarkets</h5>
+                                <p>Neighborhood stores across cities</p>
+                            </div>
+                        </div>
+
+                        <div class="channel-item">
+                            <div class="channel-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                                </svg>
+                            </div>
+                            <div class="channel-text">
+                                <h5>Gourmet Stores</h5>
+                                <p>Premium specialty food retailers</p>
+                            </div>
+                        </div>
+
+                        <div class="channel-item">
+                            <div class="channel-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                                </svg>
+                            </div>
+                            <div class="channel-text">
+                                <h5>QSR Chains</h5>
+                                <p>Pizza, sandwich & fast-food companies</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Seven Hills</h4>
+                <p>Quality Food Solutions You Can Trust</p>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <div>About Us</div>
+                <div>Our Story</div>
+                <div>Vision</div>
+                <div>Policies</div>
+            </div>
+            <div class="footer-section">
+                <h4>Operations</h4>
+                <div>Agriculture</div>
+                <div>Manufacturing</div>
+                <div>Quality & Safety</div>
+                <div>Our Customers</div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div>Email: seventohillls@gmail.com</div>
+                <div>Phone: +91 9945398335</div>
+                <div>Location: Bengaluru, India</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seven Hills Food Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById("sideNav").classList.toggle("open");
+        }
+        function toggleDropdown(el) {
+            el.parentElement.classList.toggle("active");
+        }
+
+        let lastScrollY = window.scrollY;
+        const header = document.querySelector(".top-header");
+
+        window.addEventListener("scroll", () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                // scrolling down
+                header.classList.add("hide");
+                header.classList.remove("show");
+            } else {
+                // scrolling up
+                // header.classList.remove("hide");
+                header.classList.add("show");
+            }
+
+            lastScrollY = currentScrollY;
+        });
+    </script>
+</body>
+
+</html>
