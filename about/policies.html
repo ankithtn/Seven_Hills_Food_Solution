@@ -555,57 +555,6 @@
         .policy-list li strong {
             color: #111827;
         }
-
-        /* Policy CTA */
-        .policy-cta {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .policy-cta-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .policy-cta-container h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #111827;
-            margin-bottom: 1rem;
-        }
-
-        .policy-cta-container p {
-            font-size: 1.125rem;
-            color: #6b7280;
-            margin-bottom: 2rem;
-        }
-
-        .policy-contact-btn {
-            display: inline-block;
-            padding: 1rem 3rem;
-            background: #15803d;
-            color: white;
-            text-decoration: none;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            font-size: 1.125rem;
-            transition: all 0.3s;
-        }
-
-        .policy-contact-btn:hover {
-            background: #166534;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(21, 128, 61, 0.3);
-        }
-
-        .last-updated {
-            margin-top: 2rem;
-            font-size: 0.875rem;
-            color: #9ca3af;
-            font-style: italic;
-        }
-
         /* Footer */
         footer {
             background: #090c12e2;
@@ -826,17 +775,19 @@
                 </ul>
             </li>
 
+            
             <!-- SEED TO SHELF -->
             <li>
                 <a href="/seed-to-shelf.html" class="nav-item">
-                    <svg class="nav-icon" viewBox="0 0 24 24">
-                        <path d="M12 2v20" />
-                        <path d="M5 10c7-2 9-4 14-6" />
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M6 18C10 16 12 12 12 8C12 4.5 15.5 2.5 18.5 4C21.5 5.5 22 9.5 19.5 12C17.5 14 14.5 13.5 13.5 11.5C13 10 14 8.5 15.5 8.5"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="4" cy="19" r="2" fill="currentColor" />
                     </svg>
                     Seed to Shelf
                 </a>
             </li>
-
             <!-- OPERATIONS -->
             <li class="has-dropdown">
                 <div class="dropdown-header" onclick="toggleDropdown(this)">
@@ -852,10 +803,10 @@
                     </svg>
                 </div>
                 <ul class="dropdown">
-                    <li><a href="operations/quality-and-food-safety.html">Quality & Food Safety</a></li>
-                    <li><a href="operations/agriculture.html">Agriculture</a></li>
-                    <li><a href="operations/manufacturing.html">Manufacturing</a></li>
-                    <li><a href="operations/customers.html">Our Customers</a></li>
+                    <li><a href="/operations/quality-and-food-safety.html">Quality & Food Safety</a></li>
+                    <li><a href="/operations/agriculture.html">Agriculture</a></li>
+                    <li><a href="/operations/manufacturing.html">Manufacturing</a></li>
+                    <li><a href="/operations/customers.html">Our Customers</a></li>
                 </ul>
             </li>
 
@@ -869,6 +820,28 @@
                         <path d="M13 14h3" />
                     </svg>
                     Products
+                </a>
+            </li>
+                        <li>
+                <a href="/our-markets.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M3 12h18" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M12 3c3.5 4 3.5 14 0 18" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M12 3c-3.5 4-3.5 14 0 18" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                    Our Markets
+                </a>
+            </li>
+
+            <li>
+                <a href="/sustainability.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 4c-6 0-12 3-14 8-1.5 3.5 1 7 4.5 7 5 0 9.5-6 9.5-15z" stroke="currentColor"
+                            stroke-width="1.8" />
+                        <path d="M6 15c2-1 4-1 6 0" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                    Sustainability
                 </a>
             </li>
 
@@ -925,7 +898,7 @@
                 <div class="intro-text-content">
                     <h2>Our Commitment to Excellence</h2>
                     <p>At Seven Hills Food Solutions, we believe that long-term success is built on clear values and
-                        responsible practices. Our policies guide every decision — from the farm gate to your warehouse.
+                        responsible practices. Our policies guide every decision from the farm gate to your warehouse.
                     </p>
                     <p><strong>We value and respect both the law of the land and the law of the destination as our basic
                             mantra.</strong></p>
@@ -1220,16 +1193,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Policy Contact CTA -->
-    <section class="policy-cta">
-        <div class="policy-cta-container">
-            <h2>Questions About Our Policies?</h2>
-            <p>Our team is here to provide clarification and additional information</p>
-            <a href="/contact.html" class="policy-contact-btn">Contact Us</a>
-            <p class="last-updated">Last Updated: December 2024</p>
         </div>
     </section>
     <!-- Footer -->
