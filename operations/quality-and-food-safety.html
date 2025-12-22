@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality and Food Safety</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Body & typography */
+        body {
+            margin: 0;
+            font-family: Inter, sans-serif;
+            color: #1e1e1e;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+
+        /*Icons */
+
+        .menu-icon {
+            width: 26px;
+            height: 26px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .close-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .nav-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            stroke: #1e1e1e;
+            stroke-width: 1.8;
+            fill: none;
+        }
+
+        .chevron-icon {
+            width: 18px;
+            height: 18px;
+            stroke: #1e1e1e;
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.3s ease;
+        }
+
+        /* Nav items */
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 60px;
+        }
+
+        .nav-list li {
+            margin-bottom: 18px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: #1e1e1e;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            color: #1e1e1e;
+        }
+
+        /* Dropdowns */
+
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            list-style: none;
+            padding-left: 28px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .dropdown li {
+            margin-bottom: 10px;
+        }
+
+        .dropdown a {
+            text-decoration: none;
+            color: #444;
+            font-size: 15px;
+        }
+
+        .has-dropdown.active .dropdown {
+            display: block;
+        }
+
+        .has-dropdown.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Header*/
+
+        .top-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fef9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 999;
+        }
+
+        /* Hidden when scrolling down */
+        .top-header.hide {
+            transform: translateY(-100%);
+        }
+
+        /* Visible state with separation */
+        .top-header.show {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .top-header.scrolled {
+            background: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Company name / logo */
+
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0rem;
+        }
+
+        .logo-icon {
+            width: 75px;
+            height: 75px;
+            flex-shrink: 0;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0;
+            line-height: 1.1;
+        }
+
+        .logo-text-container a {
+            text-decoration: none;
+        }
+
+        .logo-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: rgba(0, 0, 0, 0.735);
+            letter-spacing: 0.02em;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #5D8A3A;
+            letter-spacing: 0.05em;
+            margin: 0;
+            padding: 0;
+            margin-top: 2px;
+            line-height: 1;
+        }
+
+        /*Side Nav */
+        .side-nav {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 320px;
+            height: 100%;
+            background: linear-gradient(to bottom right, #f0fdf4, white);
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+            padding: 24px;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .side-nav.open {
+            right: 0;
+        }
+
+        /* Quality Hero */
+        .quality-hero {
+            position: relative;
+            background: linear-gradient(135deg, #15803d 0%, #14532d 100%);
+            padding: 10rem 2rem 5rem;
+            margin-top: 70px;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .quality-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .quality-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge svg {
+            width: 50px;
+            height: 50px;
+            color: white;
+        }
+
+        .quality-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .quality-hero-content p {
+            font-size: 1.5rem;
+            color: #dcfce7;
+        }
+
+        /* Container */
+        .quality-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Introduction Section */
+        .quality-intro {
+            padding: 5rem 1rem;
+            background: white;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .intro-content h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .lead-text {
+            font-size: 1.25rem;
+            color: #15803d;
+            font-weight: 600;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-content p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-image {
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 450px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Headers */
+        .section-header-center {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: #dcfce7;
+            color: #15803d;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .section-header-center h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        /* Selection Standards Section */
+        .selection-standards {
+            padding: 5rem 1rem;
+            background: #f9fafb;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .standards-content h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .standards-content>p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .criteria-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .criteria-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .criteria-icon {
+            width: 60px;
+            height: 60px;
+            background: #dcfce7;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .criteria-icon svg {
+            width: 30px;
+            height: 30px;
+            color: #15803d;
+        }
+
+        .criteria-text h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .criteria-text p {
+            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        .standards-image {
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 600px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .standards-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Process Timeline */
+        .process-section {
+            padding: 5rem 1rem;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+        }
+
+        .process-timeline {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .process-step {
+            position: relative;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
+            border-color: #15803d;
+            box-shadow: 0 8px 24px rgba(21, 128, 61, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #15803d;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background: #dcfce7;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-icon svg {
+            width: 30px;
+            height: 30px;
+            color: #15803d;
+        }
+
+        .process-step h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+        }
+
+        .image-placeholder svg {
+            width: 100px;
+            height: 100px;
+            color: #15803d;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        .image-placeholder p {
+            color: #15803d;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #090c12e2;
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section div {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /*Mobile Layout */
+        @media (max-width: 768px) {
+            .side-nav {
+                width: 100%;
+                right: -100%;
+            }
+
+            .logo {
+                font-size: 16px;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .process-timeline {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quality-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .intro-grid,
+            .standards-grid,
+            .audit-content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-stats,
+            .audit-features {
+                grid-template-columns: 1fr;
+            }
+
+            .process-timeline {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-image,
+            .standards-image,
+            .audit-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top-header">
+        <div class="logo-section">
+            <img src="/assets/images/sevenhilllogo.svg" alt="Seven Hills Logo" class="logo-icon" />
+
+            <div class="logo-text-container">
+                <a href="/index.html">
+                    <div class="logo-title">SEVEN HILLS</div>
+                    <div class="logo-subtitle">FOOD SOLUTIONS</div>
+                </a>
+            </div>
+        </div>
+
+        <button class="menu-btn" onclick="toggleNav()" aria-label="Open menu">
+            <svg class="menu-icon" viewBox="0 0 24 24">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+        </button>
+    </header>
+
+
+    <!--Side nav-->
+    <nav class="side-nav" id="sideNav">
+        <button class="close-btn" onclick="toggleNav()" aria-label="Close menu">
+            <!--Close SVG-->
+            <svg viewBox="0 0 24 24">
+                <line x1="4" y1="4" x2="20" y2="20" />
+                <line x1="20" y1="4" x2="4" y2="20" />
+            </svg>
+        </button>
+
+        <ul class="nav-list">
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <!-- About icon -->
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 20c1.5-4 14.5-4 16 0" />
+                        </svg>
+                        <a href="/about/about-us.html">About Us</a>
+                    </span>
+
+                    <!-- Chevron icon (instead of ▾ text) -->
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+
+                <ul class="dropdown">
+                    <li><a href="/about/our-story.html">Our Story</a></li>
+                    <li><a href="/about/vision.html">Vision</a></li>
+                    <li><a href="/about/policies.html">Policies</a></li>
+                </ul>
+            </li>
+
+
+            <!-- SEED TO SHELF -->
+            <li>
+                <a href="/seed-to-shelf.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M6 18C10 16 12 12 12 8C12 4.5 15.5 2.5 18.5 4C21.5 5.5 22 9.5 19.5 12C17.5 14 14.5 13.5 13.5 11.5C13 10 14 8.5 15.5 8.5"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="4" cy="19" r="2" fill="currentColor" />
+                    </svg>
+                    Seed to Shelf
+                </a>
+            </li>
+
+            <!-- OPERATIONS -->
+            <li class="has-dropdown">
+                <div class="dropdown-header" onclick="toggleDropdown(this)">
+                    <span class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M3 9h18M9 21V9" />
+                        </svg>
+                        Operations
+                    </span>
+                    <svg class="chevron-icon" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" />
+                    </svg>
+                </div>
+                <ul class="dropdown">
+                    <li><a href="/operations/quality-and-food-safety.html">Quality & Food Safety</a></li>
+                    <li><a href="/operations/agriculture.html">Agriculture</a></li>
+                    <li><a href="/operations/manufacturing.html">Manufacturing</a></li>
+                    <li><a href="/operations/customers.html">Our Customers</a></li>
+                </ul>
+            </li>
+
+            <!-- Products -->
+            <li>
+                <a href="/products.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                        <path d="M3 10h18" />
+                        <path d="M8 14h3" />
+                        <path d="M13 14h3" />
+                    </svg>
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="/our-markets.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M3 12h18" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M12 3c3.5 4 3.5 14 0 18" stroke="currentColor" stroke-width="1.8" />
+                        <path d="M12 3c-3.5 4-3.5 14 0 18" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                    Our Markets
+                </a>
+            </li>
+
+            <li>
+                <a href="/sustainability.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 4c-6 0-12 3-14 8-1.5 3.5 1 7 4.5 7 5 0 9.5-6 9.5-15z" stroke="currentColor"
+                            stroke-width="1.8" />
+                        <path d="M6 15c2-1 4-1 6 0" stroke="currentColor" stroke-width="1.8" />
+                    </svg>
+                    Sustainability
+                </a>
+            </li>
+
+            <!-- CONTACT -->
+            <li>
+                <a href="/contact.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="M22 6l-10 7L2 6" />
+                    </svg>
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Quality & Food Safety Hero -->
+    <section class="quality-hero">
+        <div class="quality-hero-overlay"></div>
+        <div class="quality-hero-content">
+            <div class="hero-badge">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+            </div>
+            <h1>Quality & Food Safety</h1>
+            <p>Our unwavering commitment to excellence at every stage</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="quality-intro">
+        <div class="quality-container">
+            <div class="intro-grid">
+                <div class="intro-content">
+                    <h2>Excellence is Not Negotiable</h2>
+                    <p class="lead-text">At Seven Hills Food Solutions, quality and food safety aren't just
+                        policies, they're the foundation of everything we do. From the moment a vegetable is harvested
+                        to
+                        its arrival at your facility, every step is monitored, tested, and perfected.</p>
+                    <p>Our zero-compromise approach has earned us the trust of leading international retailers and the
+                        highest certifications from world-renowned auditing bodies.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="../images/quality-intro.jpg" alt="Quality Control Lab"
+                        onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'><svg fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z\'/></svg><p>Quality Control Lab</p></div>'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selection Standards Section -->
+    <section class="selection-standards">
+        <div class="quality-container">
+            <div class="section-header-center">
+                <span class="section-badge">Our Standards</span>
+                <h2>Strict Selection Criteria</h2>
+            </div>
+
+            <div class="standards-grid">
+                <div class="standards-content">
+                    <h3>Hand-Picked Excellence</h3>
+                    <p><strong>Only the freshest, hand-picked vegetables at physiological maturity enter our
+                            facility.</strong> We reject anything that doesn't meet our strict visual, size, and
+                        firmness criteria.</p>
+
+                    <div class="criteria-list">
+                        <div class="criteria-item">
+                            <div class="criteria-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </div>
+                            <div class="criteria-text">
+                                <h4>Visual Inspection</h4>
+                                <p>Every vegetable is visually examined for color, texture, and absence of defects. No
+                                    blemishes, discoloration, or damage is acceptable.</p>
+                            </div>
+                        </div>
+
+                        <div class="criteria-item">
+                            <div class="criteria-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                </svg>
+                            </div>
+                            <div class="criteria-text">
+                                <h4>Size & Grade Standards</h4>
+                                <p>Precise sizing and grading ensure consistency. Each product category has specific
+                                    dimensional requirements that must be met.</p>
+                            </div>
+                        </div>
+
+                        <div class="criteria-item">
+                            <div class="criteria-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                </svg>
+                            </div>
+                            <div class="criteria-text">
+                                <h4>Firmness & Maturity</h4>
+                                <p>Products are tested for optimal firmness and physiological maturity. Only vegetables
+                                    at peak condition are processed.</p>
+                            </div>
+                        </div>
+
+                        <div class="criteria-item">
+                            <div class="criteria-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </div>
+                            <div class="criteria-text">
+                                <h4>Zero Tolerance Rejection</h4>
+                                <p>Any product that fails even one criterion is immediately rejected. No exceptions, no
+                                    compromises—ever.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="standards-image">
+                    <img src="../images/selection-process.jpg" alt="Hand-picking vegetables"
+                        onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'><svg fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\'/></svg><p>Selection Process</p></div>'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Flow Section -->
+    <section class="process-section">
+        <div class="quality-container">
+            <div class="section-header-center">
+                <span class="section-badge">Our Process</span>
+                <h2>Quality at Every Stage</h2>
+                <p>From farm to final packaging—monitored, tested, perfected</p>
+            </div>
+
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <h4>Farm Selection</h4>
+                    <p>Only approved farms with documented practices. Soil testing, water quality checks, and farming
+                        method verification.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <h4>Harvest Inspection</h4>
+                    <p>Visual inspection, maturity assessment, and immediate quality grading at harvest point. Rejected
+                        products never enter the facility.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h4>Facility Intake</h4>
+                    <p>Secondary verification at facility gates. Temperature checks, contamination screening, and
+                        traceability documentation.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                        </svg>
+                    </div>
+                    <h4>Processing</h4>
+                    <p>HACCP-controlled processing lines. Continuous monitoring of temperature, hygiene, and process
+                        parameters. Regular testing.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h4>Quality Testing</h4>
+                    <p>Laboratory testing for microbiological safety, chemical residues, and quality parameters. No
+                        batch ships without clearance.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">06</div>
+                    <div class="step-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                        </svg>
+                    </div>
+                    <h4>Final Packaging</h4>
+                    <p>Export-grade packaging in controlled environments. Final inspection, labeling verification, and
+                        cold chain monitoring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Seven Hills</h4>
+                <p>Quality Food Solutions You Can Trust</p>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <div>About Us</div>
+                <div>Our Story</div>
+                <div>Vision</div>
+                <div>Policies</div>
+            </div>
+            <div class="footer-section">
+                <h4>Operations</h4>
+                <div>Agriculture</div>
+                <div>Manufacturing</div>
+                <div>Quality & Safety</div>
+                <div>Our Customers</div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div>Email: seventohillls@gmail.com</div>
+                <div>Phone: +91 9945398335</div>
+                <div>Location: Bengaluru, India</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Seven Hills Food Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleNav() {
+            document.getElementById("sideNav").classList.toggle("open");
+        }
+        function toggleDropdown(el) {
+            el.parentElement.classList.toggle("active");
+        }
+
+        let lastScrollY = window.scrollY;
+        const header = document.querySelector(".top-header");
+
+        window.addEventListener("scroll", () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                // scrolling down
+                header.classList.add("hide");
+                header.classList.remove("show");
+            } else {
+                // scrolling up
+                header.classList.remove("hide");
+                header.classList.add("show");
+            }
+            lastScrollY = currentScrollY;
+        });
+    </script>
+</body>
+
+</html>
