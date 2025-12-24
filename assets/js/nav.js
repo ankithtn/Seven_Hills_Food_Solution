@@ -63,10 +63,10 @@ function goToSlide(index) {
 }
 function resetAutoPlay() {
     clearInterval(autoPlayInterval);
-    autoPlayInterval = setInterval(nextSlide, 5000);
+    autoPlayInterval = setInterval(nextSlide, 3000);
 }
 
-autoPlayInterval = setInterval(nextSlide, 5000)
+autoPlayInterval = setInterval(nextSlide, 3000)
 
 document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function (e) {
