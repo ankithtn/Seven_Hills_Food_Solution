@@ -237,7 +237,360 @@
             right: 0;
         }
 
+        /* Seed to Shelf Hero */
+        .seed-hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            margin-top: 70px;
+            overflow: hidden;
+        }
 
+        .seed-hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .seed-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+
+
+        .seed-hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .seed-hero-content h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .seed-hero-content p {
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 3rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .scroll-indicator {
+            width: 50px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Container */
+        .seed-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Introduction */
+        .seed-intro {
+            padding: 5rem 1rem;
+            background: white;
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-content h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1.5rem;
+        }
+
+        .lead-text {
+            font-size: 1.25rem;
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        /* Journey Timeline */
+        .journey-timeline {
+            padding: 6rem 1rem;
+            background: linear-gradient(to bottom, #f9fafb 0%, white 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #dcfce7 0%, #15803d 50%, #dcfce7 100%);
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        /* The Container for a Single Stage (Row) */
+        .timeline-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            position: relative;
+            margin-bottom: 6rem;
+            z-index: 1;
+        }
+
+        /* 50% Width Containers for Image and Content */
+        .timeline-side {
+            flex: 1;
+            width: 50%;
+            position: relative;
+        }
+
+        .stage-number {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 4px solid #15803d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.8);
+            z-index: 10;
+            color: #15803d;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        /* Styling the Content Card */
+        .stage-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e5e7eb;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stage-content h3 {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stage-number span {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: #15803d;
+        }
+
+
+        /* Stage Image */
+        .stage-image {
+            width: 100%;
+            height: 380px;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .stage-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .stage-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ALTERNATING LAYOUT LOGIC */
+        .timeline-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .stage-icon {
+            width: 60px;
+            height: 60px;
+            background: #dcfce7;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .stage-icon svg {
+            width: 30px;
+            height: 30px;
+            color: #15803d;
+        }
+
+        .stage-content h3 svg {
+            width: 32px;
+            height: 32px;
+            color: #15803d;
+        }
+
+        .stage-content p {
+            font-size: 1.05rem;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .stage-points {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .stage-points li {
+            padding: 0.3rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        .stage-points li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #15803d;
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
+            top: -2px;
+        }
+
+        /* Timeline Endpoint */
+        .timeline-endpoint {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-radius: 1.5rem;
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 10px 25px rgba(21, 128, 61, 0.15);
+        }
+
+        .endpoint-icon {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: #15803d;
+        }
+
+        .endpoint-icon svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .timeline-endpoint h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-endpoint p {
+            font-size: 1.125rem;
+            color: black;
+        }
+
+        /* Image Placeholder */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-weight: bold;
+        }
+
+        .image-placeholder svg {
+            width: 100px;
+            height: 100px;
+            color: #15803d;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        .image-placeholder p {
+            color: #15803d;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
 
         /* Footer */
         footer {
@@ -326,6 +679,31 @@
             color: #9ca3af;
         }
 
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stage-content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stage-left .stage-content-wrapper,
+            .stage-right .stage-content-wrapper {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .timeline-line {
+                left: 2rem;
+            }
+
+            .stage-number {
+                left: 2rem;
+                transform: translate(-50%, 0);
+                top: 0;
+            }
+        }
+
+
         /*Mobile Layout */
         @media (max-width: 768px) {
             .side-nav {
@@ -340,6 +718,49 @@
 
         /* Responsive*/
         @media (max-width: 768px) {
+            .timeline-line {
+                left: 2rem;
+                transform: none;
+            }
+
+            .timeline-row,
+            .timeline-row:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 5rem;
+                gap: 2rem;
+            }
+
+            .timeline-side {
+                width: 100%;
+            }
+
+            .stage-number {
+                left: 2rem;
+                top: 0;
+                transform: translate(-50%, -50%);
+            }
+
+            .stage-image {
+                height: 250px;
+            }
+
+            .seed-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .seed-hero-content p {
+                font-size: 1.25rem;
+            }
+
+            .stage-image {
+                height: 300px;
+            }
+
+            .intro-content h2 {
+                font-size: 2rem;
+            }
+
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -495,6 +916,202 @@
         </ul>
     </nav>
 
+    <!-- Seed to Shelf Hero -->
+    <section class="seed-hero">
+        <div class="seed-hero-image">
+            <img src="/assets/images/seedtoshelf.png" alt="Seed to Shelf Journey" onerror="this.style.display='none'">
+        </div>
+        <div class="seed-hero-overlay"></div>
+        <div class="seed-hero-content">
+            <h1>Seed to Shelf</h1>
+            <p>Our Journey from Farm to Your Table</p>
+            <div class="scroll-indicator">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="seed-intro">
+        <div class="seed-container">
+            <div class="intro-content">
+                <h2>Complete Control, Exceptional Quality</h2>
+                <p class="lead-text">From the moment a seed is planted to when our products reach your shelf, every step
+                    is carefully monitored and perfected. Our vertically integrated process ensures quality, freshness,
+                    and food safety at every stage.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Timeline -->
+    <section class="journey-timeline">
+        <div class="seed-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-row">
+                <div class="stage-number">01</div>
+
+                <div class="timeline-side">
+                    <div class="stage-image">
+                        <img src="/assets/images/chilli-cult.jpg" alt="Cultivation"
+                            onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Cultivation Image</div>'">
+                    </div>
+                </div>
+
+                <div class="timeline-side">
+                    <div class="stage-content">
+                        <h3>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Cultivation
+                        </h3>
+                        <p>Our journey begins in carefully selected farms across Karnataka and Tamil Nadu. Seeds are
+                            planted using cluster sowing methods, ensuring optimal growth conditions.</p>
+                        <ul class="stage-points">
+                            <li>Contract farming across 225 acres</li>
+                            <li>Compliance with international standards</li>
+                            <li>Sustainable farming practices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="stage-number">02</div>
+
+                <div class="timeline-side">
+                    <div class="stage-image">
+                        <img src="/assets/images/harvest.jpg" alt="Harvest"
+                            onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Harvest Image</div>'">
+                    </div>
+                </div>
+
+                <div class="timeline-side">
+                    <div class="stage-content">
+                        <h3>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Harvest
+                        </h3>
+                        <p>Vegetables are hand-picked at peak physiological maturity by trained workers. Each product
+                            undergoes immediate visual inspection for size, firmness, and quality.</p>
+                        <ul class="stage-points">
+                            <li>Hand-picked at optimal maturity</li>
+                            <li>Immediate quality inspection</li>
+                            <li>Zero-tolerance rejection policy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="stage-number">03</div>
+
+                <div class="timeline-side">
+                    <div class="stage-image">
+                        <img src="/assets/images/transport.jpg" alt="Transportation"
+                            onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Transport Image</div>'">
+                    </div>
+                </div>
+
+                <div class="timeline-side">
+                    <div class="stage-content">
+                        <h3>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            Transportation
+                        </h3>
+                        <p>Fresh produce is transported quickly to processing facilities. Our efficient logistics ensure
+                            minimal time between harvest and processing to preserve freshness.</p>
+                        <ul class="stage-points">
+                            <li>Short lead time from farm to facility</li>
+                            <li>Temperature-controlled vehicles</li>
+                            <li>Real-time tracking and monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="stage-number">04</div>
+
+                <div class="timeline-side">
+                    <div class="stage-image">
+                        <img src="/assets/images/processing.png" alt="Processing"
+                            onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Processing Image</div>'">
+                    </div>
+                </div>
+
+                <div class="timeline-side">
+                    <div class="stage-content">
+                        <h3>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            Processing
+                        </h3>
+                        <p>Fresh greens are washed, sorted, brined, fermented, and pasteurized. Our state-of-the-art
+                            HACCP-certified facilities ensure every step is controlled.</p>
+                        <ul class="stage-points">
+                            <li>Multi-stage washing and sorting</li>
+                            <li>Controlled fermentation process</li>
+                            <li>Pasteurization for food safety</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="stage-number">05</div>
+
+                <div class="timeline-side">
+                    <div class="stage-image">
+                        <img src="/assets/images/quality.png" alt="Quality Control"
+                            onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'>Quality Image</div>'">
+                    </div>
+                </div>
+
+                <div class="timeline-side">
+                    <div class="stage-content">
+                        <h3>
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            Quality Control
+                        </h3>
+                        <p>Quality checks ensure pH levels, microbial safety, and flavor consistency. Our laboratory
+                            tests every batch for compliance with international standards.</p>
+                        <ul class="stage-points">
+                            <li>pH level testing for preservation</li>
+                            <li>Microbiological safety verification</li>
+                            <li>Flavor and texture consistency checks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-endpoint">
+                <div class="endpoint-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3>Ready for Your Shelf</h3>
+                <p>From seed to shelf, every step is designed to deliver exceptional quality.</p>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer id="contact">
         <div class="footer-container">
@@ -502,19 +1119,22 @@
                 <h4>Seven Hills</h4>
                 <p>Quality Food Solutions You Can Trust</p>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/share/1A52d2kZrG/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <a href="https://www.facebook.com/share/1A52d2kZrG/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Facebook">
                         <svg fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                         </svg>
                     </a>
-                    <a href="https://www.instagram.com/seventohills/?utm_source=qr&igsh=d3huYmEycHloZnNj#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <a href="https://www.instagram.com/seventohills/?utm_source=qr&igsh=d3huYmEycHloZnNj#"
+                        target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                         <svg fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                         </svg>
                     </a>
-                    <a href="https://youtube.com/@sevenhills-o5r?si=elzskyJr9kIoSPT5" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <a href="https://youtube.com/@sevenhills-o5r?si=elzskyJr9kIoSPT5" target="_blank"
+                        rel="noopener noreferrer" aria-label="YouTube">
                         <svg fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
