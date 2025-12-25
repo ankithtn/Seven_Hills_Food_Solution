@@ -686,9 +686,28 @@
 
         /* Responsive Design for Mobile */
         @media (max-width: 1024px) {
+            .timeline-line {
+                display: none;
+            }
+
+            .stage-number {
+                position: relative;
+                left: 0;
+                top: 0;
+                transform: none;
+                margin: 0 auto 1.5rem;
+                width: 70px;
+                height: 70px;
+            }
+
+            .stage-number span {
+                font-size: 1.5rem;
+            }
+
             .stage-content-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0;
             }
 
             .stage-left .stage-content-wrapper,
@@ -697,29 +716,22 @@
                 padding-right: 0;
             }
 
-            .timeline-line {
-                left: 40px;
+            .stage-image {
+                order: 1;
+                height: 300px;
+                border-radius: 1rem 1rem 0 0;
+                margin-bottom: 0;
             }
 
-            .stage-number {
-                left: 40px;
-                transform: translate(-50%, 0);
-                top: 2rem;
-                width: 60px;
-                height: 60px;
+            .stage-content {
+                order: 2;
+                border-radius: 0 0 1rem 1rem;
+                border-top: none;
+                margin-top: -2px;
             }
 
-            .stage-number span {
-                font-size: 1.25rem;
-            }
-
-            .stage-left .stage-content-wrapper,
-            .stage-right .stage-content-wrapper {
-                padding-left: 100px;
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
+            .timeline-stage {
+                margin-bottom: 3rem;
             }
         }
 
@@ -727,8 +739,8 @@
 
             /* Hero */
             .seed-hero {
-                height: 80vh;
-                min-height: 500px;
+                height: 60vh;
+                min-height: 400px;
             }
 
             .seed-hero-content h1 {
@@ -765,41 +777,33 @@
 
             /* Timeline */
             .journey-timeline {
-                padding: 3rem 1rem;
+                padding: 2rem 1rem;
             }
 
             .timeline-stage {
-                margin-bottom: 4rem;
-            }
-
-            .timeline-line {
-                left: 30px;
+                margin-bottom: 2.5rem;
             }
 
             .stage-number {
-                left: 30px;
-                width: 50px;
-                height: 50px;
-                top: 1.5rem;
+                width: 60px;
+                height: 60px;
+                margin-bottom: 1rem;
             }
 
             .stage-number span {
-                font-size: 1rem;
-            }
-
-            .stage-left .stage-content-wrapper,
-            .stage-right .stage-content-wrapper {
-                padding-left: 80px;
+                font-size: 1.25rem;
             }
 
             /* Stage Image */
             .stage-image {
-                height: 300px;
+                height: 250px;
+                border-radius: 1rem 1rem 0 0;
             }
 
             /* Stage Content */
             .stage-content {
-                padding: 2rem 1.5rem;
+                padding: 1.75rem 1.25rem;
+                border-radius: 0 0 1rem 1rem;
             }
 
             .stage-icon {
@@ -815,14 +819,26 @@
 
             .stage-content h3 {
                 font-size: 1.5rem;
+                margin-bottom: 0.75rem;
             }
 
             .stage-content p {
                 font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .stage-points {
+                margin-top: 1rem;
             }
 
             .stage-points li {
                 font-size: 0.95rem;
+                padding: 0.4rem 0;
+                padding-left: 1.75rem;
+            }
+
+            .stage-points li::before {
+                font-size: 1rem;
             }
 
             /* Timeline Endpoint */
@@ -848,14 +864,18 @@
             .timeline-endpoint p {
                 font-size: 1rem;
             }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 480px) {
 
             /* Hero */
             .seed-hero {
-                height: 70vh;
-                min-height: 450px;
+                height: 50vh;
+                min-height: 350px;
             }
 
             .seed-hero-content h1 {
@@ -867,6 +887,10 @@
             }
 
             /* Introduction */
+            .seed-intro {
+                padding: 2.5rem 1rem;
+            }
+
             .intro-content h2 {
                 font-size: 1.75rem;
             }
@@ -876,53 +900,78 @@
             }
 
             /* Timeline */
-            .timeline-line {
-                left: 25px;
+            .journey-timeline {
+                padding: 2rem 1rem;
+            }
+
+            .timeline-stage {
+                margin-bottom: 2rem;
             }
 
             .stage-number {
-                left: 25px;
-                width: 45px;
-                height: 45px;
+                width: 55px;
+                height: 55px;
+                margin-bottom: 1rem;
             }
 
             .stage-number span {
-                font-size: 0.95rem;
+                font-size: 1.125rem;
             }
 
-            .stage-left .stage-content-wrapper,
-            .stage-right .stage-content-wrapper {
-                padding-left: 70px;
-                padding-right: 0.5rem;
-            }
-
+            /* Stage Image */
             .stage-image {
-                height: 250px;
+                height: 220px;
             }
 
+            /* Stage Content */
             .stage-content {
                 padding: 1.5rem 1rem;
             }
 
+            .stage-icon {
+                width: 45px;
+                height: 45px;
+            }
+
+            .stage-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
             .stage-content h3 {
-                font-size: 1.25rem;
+                font-size: 1.35rem;
+                margin-bottom: 0.75rem;
             }
 
             .stage-content p {
                 font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
             }
 
             .stage-points li {
-                font-size: 0.875rem;
+                font-size: 0.9rem;
+                padding: 0.35rem 0;
                 padding-left: 1.5rem;
             }
 
+            /* Timeline Endpoint */
             .timeline-endpoint {
-                padding: 1.5rem 1rem;
+                padding: 1.75rem 1.25rem;
+            }
+
+            .endpoint-icon {
+                width: 55px;
+                height: 55px;
+            }
+
+            .endpoint-icon svg {
+                width: 28px;
+                height: 28px;
             }
 
             .timeline-endpoint h3 {
-                font-size: 1.25rem;
+                font-size: 1.35rem;
             }
 
             .timeline-endpoint p {
