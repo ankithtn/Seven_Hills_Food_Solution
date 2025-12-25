@@ -684,7 +684,7 @@
             color: #9ca3af;
         }
 
-        /* Responsive */
+        /* Responsive Design for Mobile */
         @media (max-width: 1024px) {
             .stage-content-wrapper {
                 grid-template-columns: 1fr;
@@ -698,56 +698,37 @@
             }
 
             .timeline-line {
-                left: 2rem;
+                left: 40px;
             }
 
             .stage-number {
-                left: 2rem;
+                left: 40px;
                 transform: translate(-50%, 0);
-                top: 0;
+                top: 2rem;
+                width: 60px;
+                height: 60px;
+            }
+
+            .stage-number span {
+                font-size: 1.25rem;
+            }
+
+            .stage-left .stage-content-wrapper,
+            .stage-right .stage-content-wrapper {
+                padding-left: 100px;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-
-        /*Mobile Layout */
         @media (max-width: 768px) {
-            .side-nav {
-                width: 100%;
-                right: -100%;
-            }
 
-            .logo {
-                font-size: 16px;
-            }
-        }
-
-        /* Responsive*/
-        @media (max-width: 768px) {
-            .timeline-line {
-                left: 2rem;
-                transform: none;
-            }
-
-            .timeline-row,
-            .timeline-row:nth-child(even) {
-                flex-direction: column;
-                align-items: flex-start;
-                padding-left: 5rem;
-                gap: 2rem;
-            }
-
-            .timeline-side {
-                width: 100%;
-            }
-
-            .stage-number {
-                left: 2rem;
-                top: 0;
-                transform: translate(-50%, -50%);
-            }
-
-            .stage-image {
-                height: 250px;
+            /* Hero */
+            .seed-hero {
+                height: 80vh;
+                min-height: 500px;
             }
 
             .seed-hero-content h1 {
@@ -756,22 +737,198 @@
 
             .seed-hero-content p {
                 font-size: 1.25rem;
+                margin-bottom: 2rem;
             }
 
-            .stage-image {
-                height: 300px;
+            .scroll-indicator {
+                width: 40px;
+                height: 40px;
+            }
+
+            .scroll-indicator svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            /* Introduction */
+            .seed-intro {
+                padding: 3rem 1rem;
             }
 
             .intro-content h2 {
                 font-size: 2rem;
             }
 
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
+            .lead-text {
+                font-size: 1.125rem;
+            }
+
+            /* Timeline */
+            .journey-timeline {
+                padding: 3rem 1rem;
+            }
+
+            .timeline-stage {
+                margin-bottom: 4rem;
+            }
+
+            .timeline-line {
+                left: 30px;
+            }
+
+            .stage-number {
+                left: 30px;
+                width: 50px;
+                height: 50px;
+                top: 1.5rem;
+            }
+
+            .stage-number span {
+                font-size: 1rem;
+            }
+
+            .stage-left .stage-content-wrapper,
+            .stage-right .stage-content-wrapper {
+                padding-left: 80px;
+            }
+
+            /* Stage Image */
+            .stage-image {
+                height: 300px;
+            }
+
+            /* Stage Content */
+            .stage-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .stage-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 1rem;
+            }
+
+            .stage-icon svg {
+                width: 25px;
+                height: 25px;
+            }
+
+            .stage-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .stage-content p {
+                font-size: 1rem;
+            }
+
+            .stage-points li {
+                font-size: 0.95rem;
+            }
+
+            /* Timeline Endpoint */
+            .timeline-endpoint {
+                padding: 2rem 1.5rem;
+            }
+
+            .endpoint-icon {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 1rem;
+            }
+
+            .endpoint-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .timeline-endpoint h3 {
+                font-size: 1.5rem;
+            }
+
+            .timeline-endpoint p {
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 480px) {
+
+            /* Hero */
+            .seed-hero {
+                height: 70vh;
+                min-height: 450px;
+            }
+
+            .seed-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .seed-hero-content p {
+                font-size: 1.125rem;
+            }
+
+            /* Introduction */
+            .intro-content h2 {
+                font-size: 1.75rem;
+            }
+
+            .lead-text {
+                font-size: 1rem;
+            }
+
+            /* Timeline */
+            .timeline-line {
+                left: 25px;
+            }
+
+            .stage-number {
+                left: 25px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .stage-number span {
+                font-size: 0.95rem;
+            }
+
+            .stage-left .stage-content-wrapper,
+            .stage-right .stage-content-wrapper {
+                padding-left: 70px;
+                padding-right: 0.5rem;
+            }
+
+            .stage-image {
+                height: 250px;
+            }
+
+            .stage-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .stage-content h3 {
+                font-size: 1.25rem;
+            }
+
+            .stage-content p {
+                font-size: 0.95rem;
+            }
+
+            .stage-points li {
+                font-size: 0.875rem;
+                padding-left: 1.5rem;
+            }
+
+            .timeline-endpoint {
+                padding: 1.5rem 1rem;
+            }
+
+            .timeline-endpoint h3 {
+                font-size: 1.25rem;
+            }
+
+            .timeline-endpoint p {
+                font-size: 0.95rem;
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
             }
