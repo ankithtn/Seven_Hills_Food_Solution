@@ -76,7 +76,12 @@
 .nav-list a:hover{
   color:#5D8A3A;
 }
-
+.nav-item a:focus{
+  outline: none;
+}
+.nav-item a:focus-visible{
+  outline: none;
+}
 /* Dropdowns */
 
 .dropdown-header {
