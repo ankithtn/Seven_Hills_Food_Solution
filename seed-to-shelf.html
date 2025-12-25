@@ -687,23 +687,19 @@
 
         @media (max-width: 768px) {
 
-            /* --- Hero Section Adjustments --- */
+            /* --- Hero  Adjustments --- */
             .seed-hero {
                 min-height: 500px;
-                /* Reduce minimum height */
                 height: auto;
-                /* Allow content to dictate height if needed */
                 margin-top: 60px;
             }
 
             .seed-hero-content {
                 padding: 4rem 1.5rem;
-                /* Adjust padding */
             }
 
             .seed-hero-content h1 {
                 font-size: 2.5rem;
-                /* Smaller font for mobile */
                 line-height: 1.2;
             }
 
@@ -712,7 +708,6 @@
                 margin-bottom: 2rem;
             }
 
-            /* --- Intro Section --- */
             .seed-intro {
                 padding: 3rem 1rem;
             }
@@ -720,56 +715,50 @@
             .intro-content h2 {
                 font-size: 2rem;
             }
+        }
 
-            /* 1. Move the center line to the left side */
-            .timeline-line {
-                left: 20px;
-                transform: none;
-                /* Remove centering transform */
+
+        @media (max-width: 768px) {
+
+            .timeline-row,
+            .timeline-row:nth-child(even) {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                margin-bottom: 4rem;
+                position: relative;
             }
 
-            /* 2. Move the number bubbles to align with the left line */
-            .stage-number {
-                left: 20px;
-                transform: translate(-50%, -50%);
-                /* Keep vertical centering only */
-                width: 60px;
-                /* Slightly smaller bubble */
-                height: 60px;
-            }
-
-            .stage-number span {
-                font-size: 1.25rem;
-            }
-
-            /* 3. Reset the "Zig-Zag" padding structure */
-            /* This overrides the calc(50% + 50px) that breaks mobile */
-            .stage-left .stage-content-wrapper,
-            .stage-right .stage-content-wrapper {
-                padding-left: 3rem;
-                /* Add space for the line on the left */
-                padding-right: 0;
-                display: flex;
-                /* Switch grid to flex for better stacking control */
-                flex-direction: column-reverse;
-                /* Puts Image on top, Text below */
-                gap: 1.5rem;
-            }
-
-            /* 4. Fix specific alignment for Right stages to match Left stages */
-            .stage-right .stage-content-wrapper {
-                padding-left: 3rem;
-            }
-
-            /* 5. Adjust Images */
-            .stage-image {
-                height: 250px;
-                /* Reduce image height */
+            .timeline-side {
                 width: 100%;
+                flex: none;
+                padding: 0;
             }
 
-            /* 6. Adjust Content Box */
+            .timeline-line {
+                left: 15px;
+                transform: none;
+            }
+
+            .stage-number {
+                left: 15px;
+                top: 0;
+                transform: translateX(-50%);
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+                border-width: 3px;
+            }
+
+            .stage-image {
+                margin-left: 3.5rem;
+                width: calc(100% - 3.5rem);
+                height: 220px;
+            }
+
             .stage-content {
+                margin-left: 3.5rem;
+                width: calc(100% - 3.5rem);
                 padding: 1.5rem;
             }
 
@@ -777,18 +766,12 @@
                 font-size: 1.5rem;
             }
 
-            /* 7. Timeline Endpoint adjustments */
-            .timeline-endpoint {
-                padding: 2rem 1rem;
+            .stage-content p {
+                font-size: 1rem;
             }
 
-            .timeline-endpoint h3 {
-                font-size: 1.75rem;
-            }
-
-            /* 8. Container Padding */
-            .seed-container {
-                padding: 0 1rem;
+            .footer-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
