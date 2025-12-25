@@ -61,7 +61,7 @@
   margin-bottom: 18px;
 }
 
-.nav-item{
+.nav-item {
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -69,19 +69,18 @@
   text-decoration: none;
   color: #1e1e1e;
 }
-.nav-item a{
+
+.nav-item a {
   text-decoration: none;
-  color:#1e1e1e;
+  color: #1e1e1e;
+  -webkit-tap-highlight-color: transparent;
+
 }
-.nav-list a:hover{
-  color:#5D8A3A;
+
+.nav-list a:hover {
+  color: #5D8A3A;
 }
-.nav-item a:focus{
-  outline: none;
-}
-.nav-item a:focus-visible{
-  outline: none;
-}
+
 /* Dropdowns */
 
 .dropdown-header {
@@ -118,30 +117,34 @@
 
 /* Hero section*/
 .btn {
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
+
 .btn-primary {
-    background: #15803d;
-    color: white;
-    border: none;
+  background: #15803d;
+  color: white;
+  border: none;
 }
+
 .btn-primary:hover {
-    background: #166534;
+  background: #166534;
 }
+
 .btn-secondary {
-    background: transparent;
-    color: #15803d;
-    border: 2px solid #15803d;
+  background: transparent;
+  color: #15803d;
+  border: 2px solid #15803d;
 }
+
 .btn-secondary:hover {
-    background: #f0fdf4;
+  background: #f0fdf4;
 }
