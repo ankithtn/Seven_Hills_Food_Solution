@@ -684,85 +684,35 @@
             color: #9ca3af;
         }
 
-        /* Responsive Design for Mobile */
-        @media (max-width: 1024px) {
-            .timeline-line {
-                display: none;
-            }
-
-            .stage-number {
-                position: relative;
-                left: 0;
-                top: 0;
-                transform: none;
-                margin: 0 auto 1.5rem;
-                width: 70px;
-                height: 70px;
-            }
-
-            .stage-number span {
-                font-size: 1.5rem;
-            }
-
-            .stage-content-wrapper {
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .stage-left .stage-content-wrapper,
-            .stage-right .stage-content-wrapper {
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            .stage-image {
-                order: 1;
-                height: 300px;
-                border-radius: 1rem 1rem 0 0;
-                margin-bottom: 0;
-            }
-
-            .stage-content {
-                order: 2;
-                border-radius: 0 0 1rem 1rem;
-                border-top: none;
-                margin-top: -2px;
-            }
-
-            .timeline-stage {
-                margin-bottom: 3rem;
-            }
-        }
 
         @media (max-width: 768px) {
 
-            /* Hero */
+            /* --- Hero Section Adjustments --- */
             .seed-hero {
-                height: 60vh;
-                min-height: 400px;
+                min-height: 500px;
+                /* Reduce minimum height */
+                height: auto;
+                /* Allow content to dictate height if needed */
+                margin-top: 60px;
+            }
+
+            .seed-hero-content {
+                padding: 4rem 1.5rem;
+                /* Adjust padding */
             }
 
             .seed-hero-content h1 {
                 font-size: 2.5rem;
+                /* Smaller font for mobile */
+                line-height: 1.2;
             }
 
             .seed-hero-content p {
-                font-size: 1.25rem;
+                font-size: 1.125rem;
                 margin-bottom: 2rem;
             }
 
-            .scroll-indicator {
-                width: 40px;
-                height: 40px;
-            }
-
-            .scroll-indicator svg {
-                width: 20px;
-                height: 20px;
-            }
-
-            /* Introduction */
+            /* --- Intro Section --- */
             .seed-intro {
                 padding: 3rem 1rem;
             }
@@ -771,215 +721,74 @@
                 font-size: 2rem;
             }
 
-            .lead-text {
-                font-size: 1.125rem;
+            /* 1. Move the center line to the left side */
+            .timeline-line {
+                left: 20px;
+                transform: none;
+                /* Remove centering transform */
             }
 
-            /* Timeline */
-            .journey-timeline {
-                padding: 2rem 1rem;
-            }
-
-            .timeline-stage {
-                margin-bottom: 2.5rem;
-            }
-
+            /* 2. Move the number bubbles to align with the left line */
             .stage-number {
+                left: 20px;
+                transform: translate(-50%, -50%);
+                /* Keep vertical centering only */
                 width: 60px;
+                /* Slightly smaller bubble */
                 height: 60px;
-                margin-bottom: 1rem;
             }
 
             .stage-number span {
                 font-size: 1.25rem;
             }
 
-            /* Stage Image */
+            /* 3. Reset the "Zig-Zag" padding structure */
+            /* This overrides the calc(50% + 50px) that breaks mobile */
+            .stage-left .stage-content-wrapper,
+            .stage-right .stage-content-wrapper {
+                padding-left: 3rem;
+                /* Add space for the line on the left */
+                padding-right: 0;
+                display: flex;
+                /* Switch grid to flex for better stacking control */
+                flex-direction: column-reverse;
+                /* Puts Image on top, Text below */
+                gap: 1.5rem;
+            }
+
+            /* 4. Fix specific alignment for Right stages to match Left stages */
+            .stage-right .stage-content-wrapper {
+                padding-left: 3rem;
+            }
+
+            /* 5. Adjust Images */
             .stage-image {
                 height: 250px;
-                border-radius: 1rem 1rem 0 0;
+                /* Reduce image height */
+                width: 100%;
             }
 
-            /* Stage Content */
+            /* 6. Adjust Content Box */
             .stage-content {
-                padding: 1.75rem 1.25rem;
-                border-radius: 0 0 1rem 1rem;
-            }
-
-            .stage-icon {
-                width: 50px;
-                height: 50px;
-                margin-bottom: 1rem;
-            }
-
-            .stage-icon svg {
-                width: 25px;
-                height: 25px;
+                padding: 1.5rem;
             }
 
             .stage-content h3 {
                 font-size: 1.5rem;
-                margin-bottom: 0.75rem;
             }
 
-            .stage-content p {
-                font-size: 1rem;
-                margin-bottom: 1rem;
-            }
-
-            .stage-points {
-                margin-top: 1rem;
-            }
-
-            .stage-points li {
-                font-size: 0.95rem;
-                padding: 0.4rem 0;
-                padding-left: 1.75rem;
-            }
-
-            .stage-points li::before {
-                font-size: 1rem;
-            }
-
-            /* Timeline Endpoint */
+            /* 7. Timeline Endpoint adjustments */
             .timeline-endpoint {
-                padding: 2rem 1.5rem;
-            }
-
-            .endpoint-icon {
-                width: 60px;
-                height: 60px;
-                margin-bottom: 1rem;
-            }
-
-            .endpoint-icon svg {
-                width: 30px;
-                height: 30px;
-            }
-
-            .timeline-endpoint h3 {
-                font-size: 1.5rem;
-            }
-
-            .timeline-endpoint p {
-                font-size: 1rem;
-            }
-
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            /* Hero */
-            .seed-hero {
-                height: 50vh;
-                min-height: 350px;
-            }
-
-            .seed-hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .seed-hero-content p {
-                font-size: 1.125rem;
-            }
-
-            /* Introduction */
-            .seed-intro {
-                padding: 2.5rem 1rem;
-            }
-
-            .intro-content h2 {
-                font-size: 1.75rem;
-            }
-
-            .lead-text {
-                font-size: 1rem;
-            }
-
-            /* Timeline */
-            .journey-timeline {
                 padding: 2rem 1rem;
             }
 
-            .timeline-stage {
-                margin-bottom: 2rem;
-            }
-
-            .stage-number {
-                width: 55px;
-                height: 55px;
-                margin-bottom: 1rem;
-            }
-
-            .stage-number span {
-                font-size: 1.125rem;
-            }
-
-            /* Stage Image */
-            .stage-image {
-                height: 220px;
-            }
-
-            /* Stage Content */
-            .stage-content {
-                padding: 1.5rem 1rem;
-            }
-
-            .stage-icon {
-                width: 45px;
-                height: 45px;
-            }
-
-            .stage-icon svg {
-                width: 22px;
-                height: 22px;
-            }
-
-            .stage-content h3 {
-                font-size: 1.35rem;
-                margin-bottom: 0.75rem;
-            }
-
-            .stage-content p {
-                font-size: 0.95rem;
-                line-height: 1.6;
-                margin-bottom: 1rem;
-            }
-
-            .stage-points li {
-                font-size: 0.9rem;
-                padding: 0.35rem 0;
-                padding-left: 1.5rem;
-            }
-
-            /* Timeline Endpoint */
-            .timeline-endpoint {
-                padding: 1.75rem 1.25rem;
-            }
-
-            .endpoint-icon {
-                width: 55px;
-                height: 55px;
-            }
-
-            .endpoint-icon svg {
-                width: 28px;
-                height: 28px;
-            }
-
             .timeline-endpoint h3 {
-                font-size: 1.35rem;
+                font-size: 1.75rem;
             }
 
-            .timeline-endpoint p {
-                font-size: 0.95rem;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
+            /* 8. Container Padding */
+            .seed-container {
+                padding: 0 1rem;
             }
         }
     </style>
