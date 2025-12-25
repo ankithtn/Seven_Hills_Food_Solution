@@ -577,10 +577,12 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .footer-container {
+        grid-template-columns: 1fr;
+    }
+
     .footer-section a {
         text-decoration: none;
         -webkit-tap-highlight-color: transparent;
     }
-
-
 }
