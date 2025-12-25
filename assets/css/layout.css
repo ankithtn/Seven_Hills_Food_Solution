@@ -463,11 +463,6 @@ footer {
     margin-bottom: 0.5rem;
 }
 
-.footer-section a {
-    text-decoration: none;
-    color: #9ca3af;
-}
-
 .footer-bottom {
     max-width: 1280px;
     margin: 0 auto;
@@ -476,6 +471,7 @@ footer {
     text-align: center;
     color: #9ca3af;
 }
+
 
 /* Social Links */
 .social-links {
@@ -563,7 +559,6 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
 @media (max-width: 480px) {
     .hero-content h1 {
         font-size: 2rem;
@@ -580,5 +575,14 @@ footer {
     .footer-container{
         grid-template-columns: 1fr;
     }
-
+    footer a,
+footer a:visited,
+footer a:hover,
+footer a:active,
+footer a:focus,
+footer a:focus-visible {
+    color: #9ca3af;
+    text-decoration: none;
+    outline: none;
+}
 }
