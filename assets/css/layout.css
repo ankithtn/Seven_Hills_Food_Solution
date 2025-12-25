@@ -559,6 +559,10 @@ footer {
         font-size: 2rem;
     }
 
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .footer-section a {
         text-decoration: none;
         color: #9ca3af;
