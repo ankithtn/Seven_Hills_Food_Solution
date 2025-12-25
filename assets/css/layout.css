@@ -462,6 +462,10 @@ footer {
     color: #9ca3af;
     margin-bottom: 0.5rem;
 }
+.footer-section a{
+    text-decoration: none;
+    color: #9ca3af;
+}
 
 .footer-bottom {
     max-width: 1280px;
