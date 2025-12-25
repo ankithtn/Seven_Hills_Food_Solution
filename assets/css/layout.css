@@ -463,6 +463,17 @@ footer {
     margin-bottom: 0.5rem;
 }
 
+footer a,
+footer a:visited,
+footer a:hover,
+footer a:active,
+footer a:focus,
+footer a:focus-visible {
+    color: #9ca3af;
+    text-decoration: none;
+    outline: none;
+}
+
 .footer-bottom {
     max-width: 1280px;
     margin: 0 auto;
@@ -559,6 +570,7 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media (max-width: 480px) {
     .hero-content h1 {
         font-size: 2rem;
@@ -572,17 +584,18 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .footer-container{
+    .footer-container {
         grid-template-columns: 1fr;
     }
+
     footer a,
-footer a:visited,
-footer a:hover,
-footer a:active,
-footer a:focus,
-footer a:focus-visible {
-    color: #9ca3af;
-    text-decoration: none;
-    outline: none;
-}
+    footer a:visited,
+    footer a:hover,
+    footer a:active,
+    footer a:focus,
+    footer a:focus-visible {
+        color: #9ca3af;
+        text-decoration: none;
+        outline: none;
+    }
 }
