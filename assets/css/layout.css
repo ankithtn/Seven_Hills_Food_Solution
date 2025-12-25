@@ -574,16 +574,6 @@ footer {
     }
 
     .footer-container{
-        grid-template-columns: 2fr;
+        grid-template-columns: 1fr;
     }
-    footer a,
-footer a:visited,
-footer a:hover,
-footer a:active,
-footer a:focus,
-footer a:focus-visible {
-    color: #9ca3af;
-    text-decoration: none;
-    outline: none;
-}
 }
