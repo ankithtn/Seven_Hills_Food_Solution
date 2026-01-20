@@ -251,16 +251,11 @@
             margin-bottom: 3rem;
         }
 
-        .post-category {
-            display: inline-block;
-            background: #dcfce7;
-            color: #15803d;
-            padding: 0.5rem 1.5rem;
-            border-radius: 2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
+        .post-header p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #374151;
+            text-align: left;
         }
 
         .post-title {
@@ -281,14 +276,28 @@
 
         /* Main Image */
         .post-featured-image {
-            display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 500px;
-            height: 500px;
-            border-radius: 1.5rem;
+            width: 350px;
+            height: 350px;
+            border-radius: 1rem;
             margin-bottom: 3rem;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-featured-image1 {
+            margin-left: auto;
+            margin-right: auto;
+            width: 350px;
+            height: 600px;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-img {
+            display: flex;
+            flex-direction: row;
         }
 
         /* Content Typography */
@@ -448,21 +457,41 @@
                 font-size: 2rem;
             }
 
+            .post-img {
+                gap: 1rem;
+            }
+
             .post-featured-image {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 450px;
+                width: 250px;
+                height: 250px;
+            }
+            .post-featured-image1 {
+                width: 250px;
                 height: 450px;
             }
+            
         }
 
         @media (max-width: 480px) {
+            .post-img {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .post-featured-image {
+                width: 100%;
+                max-width: 350px;
+                height: auto;
+                aspect-ratio: 1 / 1;
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
             }
+
             .post-featured-image {
                 display: block;
+                grid-template-columns: 1fr;
                 margin-left: auto;
                 margin-right: auto;
                 width: 350px;
@@ -628,60 +657,95 @@
 
         <article>
             <div class="post-header">
-                <span class="post-category">Industry Trends</span>
-                <h1 class="post-title">Is the term "Probiotic" really new to the food industry?</h1>
+                <h1 class="post-title">Gummy Stem Blight : Its occurance in Gherkins, identification and control
+                    measures.</h1>
                 <div class="post-meta">
-                    <span>Dec 27, 2025</span>
+                    <span>January 11, 2026</span>
                     <span>By Seven Hills</span>
                 </div>
-            </div>
+                <p>Gummy Stem Blight (GSB) of Didymella is caused by fungi in the genus Stagonosporopsis its previously
+                    classified under Didymella bryoniae or Phoma cucurbitacearum. <br><br>
 
-            <div class="post-img">
-                <img src="/assets/images/blog1.jpg" alt="Probiotic Foods" class="post-featured-image">
-            </div>
+                    In gherkins, particularly in India, a major gherkin-producing region like Karnataka, epidemics have
+                    been linked to multiple species. <br><br>
 
+                    Stagonosporopsis caricae, Stagonosporopsis citrulli and <br>
+                    sometimes Stagonosporopsis cucurbitacearum or Didymella bryoniae.
+                </p>
+            </div>
             <div class="post-content">
-                <p><strong>Probiotic Foods Rule and Dominate the Future Food Industry</strong></p>
+                <div class="post-img">
+                    <img src="/assets/images/blog2.1.jpg" alt="" class="post-featured-image">
+                    <img src="/assets/images/blog2.2.jpg" alt="" class="post-featured-image">
+                </div>
+                <div class="post-img">
+                    <img src="/assets/images/blog2.3.jpg" alt="" class="post-featured-image">
+                    <img src="/assets/images/blog2.4.jpg" alt="" class="post-featured-image">
+                </div>
 
-                <p>The history of probiotic foods dates back thousands of years, long before anyone understood the
-                    science behind them. Humans have been consuming fermented foods for preservation, flavor, and
-                    unknowingly, health benefits, since ancient times.</p>
+                <p>
+                    These species are morphologically similar but genetically distinct, and at least two have been
+                    confirmed in severe outbreaks on gherkins since 2008. <br><br>
+                    <strong>GSB Occurrence</strong> <br><br>
 
-                <h3>A History of Fermentation</h3>
-                <p>Fermentation began around 10,000 BCE, coinciding with the shift from hunter-gatherer societies to
-                    agriculture. Early evidence points to fermented dairy products, such as yogurt, emerging in regions
-                    like the Middle East and North Africa. Legend has it that yogurt was accidentally discovered when
-                    milk soured in goat-skin bags carried by nomads.</p>
+                    GSB is a widespread and devastating disease in cucurbits globally, thriving in warm, humid
+                    conditions like optimal around 20–25°C with high moisture >90%. <br><br>
 
-                <p>From <strong>Kefir</strong> in the Caucasus Mountains to <strong>Sauerkraut</strong> in Germany and
-                    <strong>Kimchi</strong> in Korea, ancient civilizations intuitively benefited from these live
-                    microbes.
+
+                    In India, severe epidemics on gherkins have been reported since 2008, especially in Karnataka, a key
+                    production area. <br><br>
+
+                    These outbreaks have significantly impacted yields. The disease can occur in open fields,
+                    greenhouses, or during transplant stages, spreading via infected seeds, crop debris, wind-dispersed
+                    spores, rain-splashed conidia, or contaminated tools/transplants. <br><br>
+
+                    It survives in soil, on undecomposed plant material, or as seedborne inoculum for years. Gherkins
+                    are particularly vulnerable due to intensive cultivation in humid regions. <br><br>
+
+                    <strong>GSB Symptoms</strong> <br><br>
+
+                    <strong>Leaves:</strong> Small, circular, tan to brown water-soaked spots that expand, often
+                    starting at margins, forming concentric rings or target-like patterns; leaves blight and die.
                 </p>
 
-                <h3>Modern Science Meets Ancient Wisdom</h3>
-                <p>The modern definition of probiotics began in the early 20th century. Nobel laureate Élie Metchnikoff
-                    observed that Bulgarian peasants who regularly consumed fermented yogurt lived exceptionally long
-                    lives. While the term "probiotic" was coined later in the 1950s, this work laid the foundation.</p>
+                <div class="post-img">
+                    <img src="/assets/images/blog2.6.jpg" alt="" class="post-featured-image">
+                    <img src="/assets/images/blog2.7.jpg" alt="" class="post-featured-image">
+                </div>
+                <p>
+                    <strong>Stems and vines:</strong> Oval/elongated cankers near nodes, dark and water-soaked, cracking
+                    open with characteristic reddish-brown or amber gummy exudate (ooze) — the hallmark feature giving
+                    the disease its name.
+                </p>
+                <div class="post-img">
+                    <img src="/assets/images/blog2.8.jpg" alt="" class="post-featured-image">
+                    <img src="/assets/images/blog2.9.jpg" alt="" class="post-featured-image">
+                </div>
+                <p><strong>Fruits: </strong>Black rot (greasy green lesions turning brownish-black), internal decay, or
+                    rot, reducing marketability (especially critical for pickled gherkins).</p>
+                <div class="post-img">
+                    <img src="/assets/images/blog2.10.jpg" alt="" class="post-featured-image">
+                    <img src="/assets/images/blog2.11.jpg" alt="" class="post-featured-image">
+                </div>
+                <p><strong>In seedlings/transplants:</strong> Necrotic leaf margins, stem lesions, and gummy ooze.
+                    Early infections can devastate young plants, while advanced cases lead to vine collapse and major
+                    yield losses.
+                </p>
+                <div class="post-img">
+                    <img src="/assets/images/blog2.12.jpg" alt="" class="post-featured-image">
+                    <img src="/assets/images/blog2.13.jpg" alt="" class="post-featured-image">
+                </div>
+                <p><strong>Management.</strong></p>
+                <div class="post-img">
+                    <img src="/assets/images/blog2.14.jpg" alt="" class="post-featured-image1">
+                    <img src="/assets/images/blog2.15.jpg" alt="" class="post-featured-image1">
+                </div>
+                <p>In India-specific studies, some fungicides and bioagents have shown efficacy against isolates from
+                    gherkin outbreaks. <br><br>
 
-                <h3>Why Probiotics are the Future</h3>
-                <p>Today, with advanced microbiome research, we know these foods support digestion, immunity, and more.
-                    Key mechanisms include:</p>
-                <ul>
-                    <li><strong>Restoring Gut Balance:</strong> Probiotics have negative reaction harmful pathogens for
-                        space and nutrients, produce short-chain fatty acids like butyrate lower intestinal pH, and
-                        strengthen the gut barrier to prevent "leaky gut."</li>
-                    <li><strong>Immune Modulation:</strong> They enhance innate and adaptive immunity by stimulating
-                        antibody production (e.g., IgA), regulating inflammation, and promoting anti-inflammatory
-                        cytokines.</li>
-                    <li><strong>Digestive Health:</strong> Help alleviate symptoms of irritable bowel syndrome (IBS),
-                        antibiotic-associated diarrhea, and inflammatory bowel disease (IBD) in some cases.
-                    </li>
-                </ul>
-
-                <h3>Conclusion</h3>
-                <p>From accidental discoveries in ancient times to intentional health boosters today, probiotic foods
-                    remind us that nourishing our gut has been a human priority for millennia. These acclaimed foods
-                    have a tremendous scope in the future generations of natural food diets.</p>
+                    If you're dealing with this in a specific region near Andhra Pradesh or Karnataka, local
+                    agricultural extension services can provide tailored advice based on current conditions. Early
+                    scouting and prevention are crucial to minimize losses in gherkin crops.</p>
             </div>
 
             <div class="back-btn-container">

@@ -251,16 +251,11 @@
             margin-bottom: 3rem;
         }
 
-        .post-category {
-            display: inline-block;
-            background: #dcfce7;
-            color: #15803d;
-            padding: 0.5rem 1.5rem;
-            border-radius: 2rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
+        .post-header p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #374151;
+            text-align: left;
         }
 
         .post-title {
@@ -281,14 +276,18 @@
 
         /* Main Image */
         .post-featured-image {
-            display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 500px;
-            height: 500px;
-            border-radius: 1.5rem;
+            width: 400px;
+            height: 350px;
+            border-radius: 1rem;
             margin-bottom: 3rem;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-img {
+            display: flex;
+            flex-direction: row;
         }
 
         /* Content Typography */
@@ -309,7 +308,10 @@
             margin-top: 2.5rem;
             margin-bottom: 1rem;
         }
-
+        
+        .post-header strong{
+            color:  #15803d;;
+        }
         .post-content strong {
             color: #15803d;
         }
@@ -448,21 +450,41 @@
                 font-size: 2rem;
             }
 
+            .post-img {
+                gap: 1rem;
+            }
+
             .post-featured-image {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 450px;
+                width: 250px;
+                height: 250px;
+            }
+            .post-featured-image1 {
+                width: 250px;
                 height: 450px;
             }
+            
         }
 
         @media (max-width: 480px) {
+            .post-img {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .post-featured-image {
+                width: 100%;
+                max-width: 350px;
+                height: auto;
+                aspect-ratio: 1 / 1;
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
             }
+
             .post-featured-image {
                 display: block;
+                grid-template-columns: 1fr;
                 margin-left: auto;
                 margin-right: auto;
                 width: 350px;
@@ -628,60 +650,78 @@
 
         <article>
             <div class="post-header">
-                <span class="post-category">Industry Trends</span>
-                <h1 class="post-title">Is the term "Probiotic" really new to the food industry?</h1>
+                <h1 class="post-title">Probiotic Sprouts</h1>
                 <div class="post-meta">
-                    <span>Dec 27, 2025</span>
+                    <span>January 06, 2026</span>
                     <span>By Seven Hills</span>
                 </div>
+                <p><strong>The old trend is sprouts are nutritious, healthy and vitamins rich foods but the new trend is fermented sprouts....</strong></p>
             </div>
-
-            <div class="post-img">
-                <img src="/assets/images/blog1.jpg" alt="Probiotic Foods" class="post-featured-image">
-            </div>
-
             <div class="post-content">
-                <p><strong>Probiotic Foods Rule and Dominate the Future Food Industry</strong></p>
+                <div class="post-img">
+                    <img src="/assets/images/blog3.1.jpg" alt="" class="post-featured-image">
+                </div>
 
-                <p>The history of probiotic foods dates back thousands of years, long before anyone understood the
-                    science behind them. Humans have been consuming fermented foods for preservation, flavor, and
-                    unknowingly, health benefits, since ancient times.</p>
+                <p>
+                    <strong>Traditional fermented soy foods like natto in Japan, origins around the 11th century or earlier,</strong> from fermented whole cooked soybeans and douchi in China, over 2,000 years old, use cooked soybeans, not deliberately sprouted ones. <br><br>
 
-                <h3>A History of Fermentation</h3>
-                <p>Fermentation began around 10,000 BCE, coinciding with the shift from hunter-gatherer societies to
-                    agriculture. Early evidence points to fermented dairy products, such as yogurt, emerging in regions
-                    like the Middle East and North Africa. Legend has it that yogurt was accidentally discovered when
-                    milk soured in goat-skin bags carried by nomads.</p>
-
-                <p>From <strong>Kefir</strong> in the Caucasus Mountains to <strong>Sauerkraut</strong> in Germany and
-                    <strong>Kimchi</strong> in Korea, ancient civilizations intuitively benefited from these live
-                    microbes.
+                    <strong>Soy sprouts or kongnamul</strong> are popular in Korean cuisine and sometimes included in kimchi variants, but kimchi itself dates back over 2,000 years and traditionally ferments vegetables like cabbage or radish, not specifically sprouts as the base. <br><br>
+                                    
+                    <strong>Recent food trends given a tremendous scope for this category of food sector..</strong>
                 </p>
 
-                <h3>Modern Science Meets Ancient Wisdom</h3>
-                <p>The modern definition of probiotics began in the early 20th century. Nobel laureate Élie Metchnikoff
-                    observed that Bulgarian peasants who regularly consumed fermented yogurt lived exceptionally long
-                    lives. While the term "probiotic" was coined later in the 1950s, this work laid the foundation.</p>
+                <div class="post-img">
+                    <img src="/assets/images/blog3.2.jpg" alt="" class="post-featured-image">
+                </div>
+                <p>Most recent references to fermenting sprouts are beans sprouts and mustard sprouts, mung bean, lentil, broccoli, or Brussels sprouts come from contemporary blogs, recipes, and experiments starting in the 2010s or earlier. </p>
+                <div class="post-img">
+                    <img src="/assets/images/blog3.3.jpg" alt="" class="post-featured-image">
+                </div>
+                <p>These are often lacto-fermented in brine for probiotic benefits, but they lack deep historical roots in traditional cultures.</p>
+                <div class="post-img">
+                    <img src="/assets/images/blog3.4.jpg" alt="" class="post-featured-image">
+                </div>
+                <p>In summary, while fermentation and sprouting individually trace back millennia especially in Asian traditions, the history of fermented sprouts as a distinct food likely dates back only to the late 20th or early 21st century, driven by modern nutrition trends rather than ancient practices.</p>
+                <div class="post-img">
+                    <img src="/assets/images/blog3.5.jpg" alt="" class="post-featured-image">
+                </div>
+                <p>Why the PROBIOTIC or fermented sprouts are miracle foods <br><br>
+                    - Improves gut health.</p>
+                <div class="post-img">
+                    <img src="/assets/images/blog3.6.jpg" alt="" class="post-featured-image">
+                </div>
+                <p> A healthy gut microbiome. This can improve digestion, reduce inflammation, alleviate oxidative stress. <br><br>
+                    - Increased nutrient bioavailability.
+                </p>
+                <div class="post-img">
+                    <img src="/assets/images/blog3.7.jpg" alt="" class="post-featured-image">
+                </div>
+                <p>
+                    Sprouting process already breaks down anti-nutrients, making vitamins minerals and proteins more absorbable. <br><br>
 
-                <h3>Why Probiotics are the Future</h3>
-                <p>Today, with advanced microbiome research, we know these foods support digestion, immunity, and more.
-                    Key mechanisms include:</p>
-                <ul>
-                    <li><strong>Restoring Gut Balance:</strong> Probiotics have negative reaction harmful pathogens for
-                        space and nutrients, produce short-chain fatty acids like butyrate lower intestinal pH, and
-                        strengthen the gut barrier to prevent "leaky gut."</li>
-                    <li><strong>Immune Modulation:</strong> They enhance innate and adaptive immunity by stimulating
-                        antibody production (e.g., IgA), regulating inflammation, and promoting anti-inflammatory
-                        cytokines.</li>
-                    <li><strong>Digestive Health:</strong> Help alleviate symptoms of irritable bowel syndrome (IBS),
-                        antibiotic-associated diarrhea, and inflammatory bowel disease (IBD) in some cases.
-                    </li>
-                </ul>
+                    Fermentation takes it further by boosting phenolic compounds, antioxidants, and digestibility. <br><br>
+                </p>
+                <div class="post-img">
+                    <img src="/assets/images/blog3.8.jpg" alt="" class="post-featured-image">
+                </div>
+                <p>
+                    - Value addition to Normal sprouts. <br><br>
 
-                <h3>Conclusion</h3>
-                <p>From accidental discoveries in ancient times to intentional health boosters today, probiotic foods
-                    remind us that nourishing our gut has been a human priority for millennia. These acclaimed foods
-                    have a tremendous scope in the future generations of natural food diets.</p>
+                    Plain sprouts are nutrient-dense but lack probiotics. Fermentation adds microbial diversity, improves sensory qualities and extends shelf life naturally. <br><br>
+
+                    - Overall balanced diet. <br><br>
+
+                    Regular consumption may aid heart health, weight management, and microbial balance—making them a modern functional food trend <br><br>
+
+                    - Higher Antioxidant and Anti-Inflammatory Effects.
+                </p>
+                <div class="post-img">
+                    <img src="/assets/images/blog3.9.jpg" alt="" class="post-featured-image">
+                </div>
+                <p>The combo elevates compounds like sulforaphane in brocolli sprouts, which support detoxification and may reduce cancer risk. <br><br>
+
+                    Fermented versions show stronger anti-inflammatory properties in animal studies.
+</p>
             </div>
 
             <div class="back-btn-container">
