@@ -97,7 +97,7 @@
     right: -360px;
     width: 320px;
     height: 100%;
-    background: linear-gradient(to bottom right, #f0fdf4, white);
+    background: linear-gradient(to bottom right, #f2f4f3, rgb(244, 242, 242));
     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
     padding: 24px;
     transition: right 0.3s ease;
@@ -400,7 +400,7 @@
 /* CTA Section */
 .cta {
     padding: 4rem 1rem;
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    background: linear-gradient(135deg, #eff3f0 0%, #f9fafa 100%);
     color: white;
 }
 
